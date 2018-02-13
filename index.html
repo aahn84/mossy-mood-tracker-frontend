@@ -17,18 +17,53 @@
 
   <body>
     <nav class="navbar sticky-top navbar-light bg-light">
-      <!-- <a class="navbar-brand" href="#">Sticky top</a> -->
-      <form class="form-inline">
-        <button class="btn btn-outline-success" type="button">Main button</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
-      </form>
+      <div class="nav-container-fluid">
+        <!-- <a class="navbar-brand" href="#">Mossy Mood Tracker</a> -->
+        <form class="form-inline">
+          <button class="btn btn-outline-success" type="button">Home</button>
+          <button class="btn btn-outline-secondary" type="button">Submit New Entry</button>
+          <!-- <button class="btn btn-sm btn-outline-secondary" type="button">Submit New Entry</button> -->
+        </form>
+      </div>
     </nav>
 
-    <div class="main">
-      <h1>Mossy Mood Tracker :)</h1>
-      <section id='userList'>
+    <div class="container">
+      <header>
+        <h1>Mossy Mood Tracker :)</h1>
+      </header>
 
-      </section>
+      <div class="main">
+
+        <section id='userList'>
+
+        </section>
+      </div>
+
+      <div class="button-container">
+        <button type="button" class="btn btn-outline-primary">Report a New Mood</button>
+      </div>
+
+      <div class="last-reported">
+        <!-- {id: 1, mood: 'indifferent', time_of_day: 'morning', users_id: 1, toys_id: 2, foods_id: 4} -->
+        <div class="row">
+          <h5>Last Reported Mood:</h5><span class="date">Date & Time</span>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            Time of Day: Test
+          </div>
+          <div class="col-sm">
+            Mood: Test
+          </div>
+          <div class="col-sm">
+            Toy: Test
+          </div>
+          <div class="col-sm">
+            Food: Test
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Bootstrap jQuery, Tether, and JavaScript plugins -->
