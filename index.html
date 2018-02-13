@@ -16,55 +16,181 @@
   </head>
 
   <body>
-    <nav class="navbar sticky-top navbar-light bg-light">
-      <div class="nav-container-fluid">
-        <!-- <a class="navbar-brand" href="#">Mossy Mood Tracker</a> -->
-        <form class="form-inline">
-          <button class="btn btn-outline-success" type="button">Home</button>
-          <button class="btn btn-outline-secondary" type="button">Submit New Entry</button>
-          <!-- <button class="btn btn-sm btn-outline-secondary" type="button">Submit New Entry</button> -->
-        </form>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Submit New Entry</a>
+          </li>
+        </ul>
       </div>
     </nav>
 
     <div class="container">
       <header>
         <h1>Mossy Mood Tracker :)</h1>
+        <p>Track Mossy's Average Mood</p>
       </header>
 
       <div class="main">
+        <section id='userList'></section>
 
-        <section id='userList'>
-
-        </section>
+        <div class="row">
+          <div class="col-sm">
+            <p>Morning</p>
+          </div>
+          <div class="col-sm">
+            <p>Afternoon</p>
+          </div>
+          <div class="col-sm">
+            <p>Evening</p>
+          </div>
+        </div>
       </div>
 
       <div class="button-container">
         <button type="button" class="btn btn-outline-primary">Report a New Mood</button>
       </div>
 
-      <div class="last-reported">
-        <!-- {id: 1, mood: 'indifferent', time_of_day: 'morning', users_id: 1, toys_id: 2, foods_id: 4} -->
-        <div class="row">
-          <h5>Last Reported Mood:</h5><span class="date">Date & Time</span>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            Time of Day: Test
+      <div class="last-reported-container">
+        <div class="last-reported">
+          <!-- {id: 1, mood: 'indifferent', time_of_day: 'morning', users_id: 1, toys_id: 2, foods_id: 4} -->
+          <div class="row">
+            <h5>Last Reported Mood:</h5><span class="date">Date & Time</span>
           </div>
-          <div class="col-sm">
-            Mood: Test
-          </div>
-          <div class="col-sm">
-            Toy: Test
-          </div>
-          <div class="col-sm">
-            Food: Test
+
+          <div class="row">
+            <div class="col-sm">
+              Time of Day: Test
+            </div>
+            <div class="col-sm">
+              Mood: Test
+            </div>
+            <div class="col-sm">
+              Toy: Test
+            </div>
+            <div class="col-sm">
+              Food: Test
+            </div>
           </div>
         </div>
       </div>
 
     </div>
+
+
+    <!-- SUBMIT NEW REPORT -->
+    <div class="report-container">
+      <h2>Seen Mossy lately? Report her latest mood below.</h2>
+
+      <!-- First & Last Name -->
+      <div class="border">
+        <form>
+          <div id="form" class="row">
+            <div class="col-4">
+              <label for="firstname">First name</label>
+              <input type="text" class="form-control" placeholder="First name" autofocus="autofocus">
+            </div>
+            <div class="col-4">
+              <label for="lastname">Last name</label>
+              <input type="text" class="form-control" placeholder="Last name">
+            </div>
+          </div>
+
+          <!-- Time of Day -->
+          <div class="row">
+            <h6>What time of day is it?</h6>
+            <div id="morning" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="morning-image">
+              <p>Morning</p>
+            </div>
+            <div id="afternoon" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="afternoon-image">
+              <p>Afternoon</p>
+            </div>
+            <div id="evening" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="evening-image">
+              <p>Evening</p>
+            </div>
+          </div>
+
+          <!-- Mood -->
+          <div class="row">
+            <h6>What Mood was Mossy in?</h6>
+            <div id="happy" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="happy-mossy">
+              <p>Happy</p>
+            </div>
+            <div id="indifferent" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="indifferent-mossy">
+              <p>Indifferent</p>
+            </div>
+            <div id="sassy" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="sassy-mossy">
+              <p>Sassy/Playful</p>
+            </div>
+          </div>
+
+          <!-- Toy -->
+          <div id="toy-eggplant" class="row">
+            <h6>Did Mossy play with any toys?</h6>
+            <div class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="toy-eggplant">
+              <p>Eggplant</p>
+            </div>
+            <div id="toy-ball" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="toy-weed-ball">
+              <p>Weed Ball</p>
+            </div>
+            <div id="toy-other" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="toy-other">
+              <p>Other</p>
+            </div>
+            <div id="toy-none" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="toy-none">
+              <p>None</p>
+            </div>
+          </div>
+
+          <!-- Food -->
+          <div class="row">
+            <h6>Did Mossy have any food?</h6>
+            <div id="food-bacon" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="food-bacon">
+              <p>Bacon</p>
+            </div>
+            <div id="food-treats" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="food-dog-treats">
+              <p>Dog Treats</p>
+            </div>
+            <div id="food-other" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="food-other">
+              <p>Other</p>
+            </div>
+            <div id="food-none" class="col-sm">
+              <img src="http://via.placeholder.com/250x250" alt="food-none">
+              <p>None</p>
+            </div>
+          </div>
+
+          <div class="submit">
+            <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      Copyright &copy; 2018 Angela Ahn
+    </footer>
 
     <!-- Bootstrap jQuery, Tether, and JavaScript plugins -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

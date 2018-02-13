@@ -1,17 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #FAEEE2;
 }
 
-.navbar {
+nav {
   background-color: #7291F3;
 }
 
-.navbar-brand {
+/* .navbar-brand {
   display: block;
   float: left;
   color: #ffffff;
   font-weight: bold;
-}
+} */
 
 .form-inline button {
   margin-right: 0.5em;
@@ -26,26 +30,35 @@ body {
 header {
   text-align: center;
   margin: 1em;
-  width: 100vw;
+  /* width: 100vw; */
 }
 
 .main {
   /* margin: 1em; */
 }
 
+section {
+  margin-bottom: 1em;
+}
+
 .button-container {
   display: flex;
-  align-items: center;
+  /* display: block; */
+  /* align-items: center; */
   justify-content: center;
   margin: 2em;
-  width: 100vw;
+  /* width: 100vw; */
+}
+
+.last-reported-container {
+  padding: 1.5em;
+  background-color: #ffffff;
 }
 
 .last-reported {
   padding: 1em;
-  border: 1px solid #6D6B69;
+  border: 1px #6D6B69 solid;
   /* color: #6D6B69; */
-  margin: 1.5em;
 }
 
 .last-reported .row {
@@ -60,7 +73,73 @@ header {
   margin-right: 1em;
 }
 
+.report-container {
+  /* display: none; */
+  padding: 1.5em;
+  background-color: #ffffff;
+  margin: 1em;
+}
 
+.report-container h2 {
+  color: #6D6B69;
+  text-align: center;
+  margin: 1em 0 1em 0;
+}
+
+.border {
+  border: 1px #6D6B69 solid;
+}
+
+#form {
+  display: flex;
+  /* justify-content: center; */
+  text-align: left;
+  font-weight: bold;
+  /* padding: 0 2.5em 0 2.5em; */
+  padding-left: 3em;
+  padding-bottom: 1em;
+}
+
+.report-container .row {
+  margin-top: 5em;
+  text-align: center;
+}
+
+h6 {
+  font-family: "Courier New", Courier, monospace;
+  /* font-family: "Arial Black", Gadget, sans-serif; */
+  font-size: 1.5em;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.report-container .row .div {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.report-container p {
+  display: block;
+}
+
+.report-container button {
+  margin-top: 2em;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+footer {
+  text-align: center;
+  color: #6D6B69;
+  width: 100%;
+  padding: 1.5em;
+  bottom: 0;
+}
 
 /*
 @media only screen and (max-width:620px) {
