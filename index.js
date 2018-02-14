@@ -42,6 +42,8 @@ axios.get('http://localhost:3000/users')
 axios.get('http://localhost:3000/reports')
   .then(res => {
     let reports = res.data
+    console.log(res)
+    console.log('Reports!', reports)
     reports.forEach(report => {
       let reportElement = document.createElement('div')
       // returnDetailData(report.user_id, ...)
@@ -90,19 +92,35 @@ document.querySelector('#home').addEventListener('touchstart', homeNav)
 document.querySelector('#new-entry').addEventListener('click', newEntryNav)
 document.querySelector('#new-entry').addEventListener('touchstart', newEntryNav)
 
-// Report New Mood
+// NEW MOOD nav
 document.querySelector('#reportNewMood').addEventListener('click', newEntryNav)
 document.querySelector('#reportNewMood').addEventListener('touchstart', newEntryNav)
+
+// SUBMIT MOOD
+document.querySelector('#submit').addEventListener('click', submitReport)
+document.querySelector('#submit').addEventListener('touchend', submitReport)
+document.querySelector('#submit').addEventListener('keydown', function() {
+  if (event.key === 'Enter') {
+    submitReport();
+  }
+})
 
 
 
 //***FUNCTIONS***
-function homeNav() {
+function homeNav(event) {
+  // event.preventDefault();
   document.querySelector('.home-container').style.display = "";
   document.querySelector('.report-container').style.display = "none";
 }
 
-function newEntryNav() {
+function newEntryNav(event) {
+  // event.preventDefault();
   document.querySelector('.home-container').style.display = "none";
   document.querySelector('.report-container').style.display = "block";
+}
+
+function submitReport(event) {
+  // event.preventDefault();
+  console.log('DID IT!')
 }
