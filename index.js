@@ -1,7 +1,7 @@
 console.log("DOM fully loaded and parsed");
 // console.log('AXIOS!', axios)
 
-
+//***ROUTES***
 //USERS
 axios.get('http://localhost:3000/users')
   .then(res => {
@@ -78,3 +78,31 @@ axios.get('http://localhost:3000/reports')
 
 
 // FOODS
+
+
+
+//***SCRIPTS***
+// HOME nav
+document.querySelector('#home').addEventListener('click', homeNav)
+document.querySelector('#home').addEventListener('touchstart', homeNav)
+
+// NEW ENTRY nav
+document.querySelector('#new-entry').addEventListener('click', newEntryNav)
+document.querySelector('#new-entry').addEventListener('touchstart', newEntryNav)
+
+// Report New Mood
+document.querySelector('#reportNewMood').addEventListener('click', newEntryNav)
+document.querySelector('#reportNewMood').addEventListener('touchstart', newEntryNav)
+
+
+
+//***FUNCTIONS***
+function homeNav() {
+  document.querySelector('.home-container').style.display = "";
+  document.querySelector('.report-container').style.display = "none";
+}
+
+function newEntryNav() {
+  document.querySelector('.home-container').style.display = "none";
+  document.querySelector('.report-container').style.display = "block";
+}

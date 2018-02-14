@@ -6,6 +6,12 @@ body {
   background-color: #FAEEE2;
 }
 
+img {
+  max-width: 250px;
+  max-height: 250px;
+  border: 1px #E1DFDE solid;
+}
+
 nav {
   background-color: #7291F3;
 }
@@ -18,19 +24,17 @@ nav {
 } */
 
 .form-inline button {
-  margin-right: 0.5em;
+  /* margin-right: 0.5em; */
   /* border: 1.5px solid; */
 }
 
-.container {
-  margin: 0;
-  width: 100vw;
+.home-container {
+  margin: 1em;
 }
 
 header {
   text-align: center;
   margin: 1em;
-  /* width: 100vw; */
 }
 
 .main {
@@ -38,20 +42,44 @@ header {
 }
 
 section {
-  margin-bottom: 1em;
+  margin-bottom: 3em;
+}
+
+#avg-moods {
+  display: flex;
+  text-align: center;
+  /* align-items: center; */
+  justify-content: center;
+  padding: 0 1em 1em 1em;
+}
+
+#avg-moods p {
+  display: block;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 1.5em;
+}
+
+#avg-moods .div {
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
 }
 
 .button-container {
   display: flex;
-  /* display: block; */
   /* align-items: center; */
   justify-content: center;
-  margin: 2em;
+  margin: 3em;
+  /* margin-bottom: 4em; */
   /* width: 100vw; */
 }
 
 .last-reported-container {
   padding: 1.5em;
+  margin: 1.5em;
   background-color: #ffffff;
 }
 
@@ -70,14 +98,14 @@ section {
 .last-reported h5 {
   display: flex;
   float: left;
-  margin-right: 1em;
+  /* margin-right: 1em; */
 }
 
 .report-container {
-  /* display: none; */
+  display: none;
   padding: 1.5em;
   background-color: #ffffff;
-  margin: 1em;
+  margin: 2em;
 }
 
 .report-container h2 {
@@ -106,6 +134,7 @@ section {
 }
 
 h6 {
+  text-align: center;
   font-family: "Courier New", Courier, monospace;
   /* font-family: "Arial Black", Gadget, sans-serif; */
   font-size: 1.5em;

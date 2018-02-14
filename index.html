@@ -10,7 +10,7 @@
       console.log(axios)
     </script> -->
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- My CSS -->
     <link rel="stylesheet" href="./styles.css">
   </head>
@@ -25,16 +25,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a id="home" class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Submit New Entry</a>
+            <a id = "new-entry" class="nav-link" href="#">New Entry</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <div class="container">
+    <div class="home-container">
       <header>
         <h1>Mossy Mood Tracker :)</h1>
         <p>Track Mossy's Average Mood</p>
@@ -43,21 +43,26 @@
       <div class="main">
         <section id='userList'></section>
 
-        <div class="row">
-          <div class="col-sm">
+        <!-- Average Moods -->
+        <div id="avg-moods" class="row">
+          <h6>Mossy's Average Moods</h6>
+          <div id="avg-morning" class="col-sm">
             <p>Morning</p>
+            <img src="http://via.placeholder.com/250x250" alt="morning-image">
           </div>
-          <div class="col-sm">
+          <div id="avg-afternoon" class="col-sm">
             <p>Afternoon</p>
+            <img src="http://via.placeholder.com/250x250" alt="afternoon-image">
           </div>
-          <div class="col-sm">
+          <div id="avg-evening" class="col-sm">
             <p>Evening</p>
+            <img src="http://via.placeholder.com/250x250" alt="evening-image">
           </div>
         </div>
       </div>
 
       <div class="button-container">
-        <button type="button" class="btn btn-outline-primary">Report a New Mood</button>
+        <button type="button" id="reportNewMood" class="btn btn-outline-primary">Report a New Mood</button>
       </div>
 
       <div class="last-reported-container">
@@ -97,11 +102,11 @@
           <div id="form" class="row">
             <div class="col-4">
               <label for="firstname">First name</label>
-              <input type="text" class="form-control" placeholder="First name" autofocus="autofocus">
+              <input type="text" class="form-control" placeholder="First name" autofocus="autofocus" required>
             </div>
             <div class="col-4">
               <label for="lastname">Last name</label>
-              <input type="text" class="form-control" placeholder="Last name">
+              <input type="text" class="form-control" placeholder="Last name" required>
             </div>
           </div>
 
@@ -109,15 +114,15 @@
           <div class="row">
             <h6>What time of day is it?</h6>
             <div id="morning" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="morning-image">
+              <img src="/images/day/if_weather-07_1530387.png">
               <p>Morning</p>
             </div>
             <div id="afternoon" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="afternoon-image">
+              <img src="/images/day/if_weather-01_1530392.png">
               <p>Afternoon</p>
             </div>
             <div id="evening" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="evening-image">
+              <img src="/images/day/if_weather-18_1530375.png">
               <p>Evening</p>
             </div>
           </div>
@@ -126,15 +131,16 @@
           <div class="row">
             <h6>What Mood was Mossy in?</h6>
             <div id="happy" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="happy-mossy">
+              <!-- <img src="/images/mossy/happy-mossy1.png" alt="happy-mossy"> -->
+              <img src="/images/mossy/happy-mossy2.jpg" alt="happy-mossy">
               <p>Happy</p>
             </div>
             <div id="indifferent" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="indifferent-mossy">
+              <img src="/images/mossy/indifferent-mossy2.jpg" alt="indifferent-mossy">
               <p>Indifferent</p>
             </div>
             <div id="sassy" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="sassy-mossy">
+              <img src="/images/mossy/sassy-mossy.jpg" alt="sassy-mossy">
               <p>Sassy/Playful</p>
             </div>
           </div>
@@ -143,19 +149,19 @@
           <div id="toy-eggplant" class="row">
             <h6>Did Mossy play with any toys?</h6>
             <div class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="toy-eggplant">
+              <img src="/images/toys/eggplant.jpg" alt="toy-eggplant">
               <p>Eggplant</p>
             </div>
             <div id="toy-ball" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="toy-weed-ball">
+              <img src="/images/toys/weed_tennis_ball_1.png" alt="toy-weed-ball">
               <p>Weed Ball</p>
             </div>
             <div id="toy-other" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="toy-other">
+              <img src="/images/toys/dog_toys.jpg">
               <p>Other</p>
             </div>
             <div id="toy-none" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="toy-none">
+              <img src="/images/toys/no-toys-allowed.png">
               <p>None</p>
             </div>
           </div>
@@ -164,19 +170,19 @@
           <div class="row">
             <h6>Did Mossy have any food?</h6>
             <div id="food-bacon" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="food-bacon">
+              <img src="/images/foods/bacon.jpg" alt="food-bacon">
               <p>Bacon</p>
             </div>
             <div id="food-treats" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="food-dog-treats">
+              <img src="/images/foods/treats.jpg" alt="treats">
               <p>Dog Treats</p>
             </div>
             <div id="food-other" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="food-other">
+              <img src="/images/foods/food.jpg" alt="food-other">
               <p>Other</p>
             </div>
             <div id="food-none" class="col-sm">
-              <img src="http://via.placeholder.com/250x250" alt="food-none">
+              <img src="/images/foods/no food.jpg" alt="food-none">
               <p>None</p>
             </div>
           </div>
@@ -193,9 +199,9 @@
     </footer>
 
     <!-- Bootstrap jQuery, Tether, and JavaScript plugins -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- My JavaScript -->
     <script defer type="text/javascript" src="./index.js"></script>
   </body>
