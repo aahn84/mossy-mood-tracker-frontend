@@ -1,7 +1,3 @@
-console.log("DOM fully loaded and parsed");
-// console.log('AXIOS!', axios)
-
-
 const path = 'http://localhost:3000';
 
 //***ROUTES***
@@ -66,7 +62,7 @@ axios.get(`${path}/reports`)
     reports = res.data
     let last = reports[reports.length-1];
     // console.log(res)
-    console.log('Reports!', reports)
+    console.log('reports', reports)
     latestMood = last.mood;
     latestTimeOfDay = last.time_of_day;
     latestUserId = last.users_id;
@@ -76,7 +72,7 @@ axios.get(`${path}/reports`)
     latestTimestamp = latestTimestampRaw.slice(0, 10);
 
     // update average moods
-    updateAverageMood(reports)
+    updateAverageMood()
     // update latest mood conatiner
     updateLatestMood()
 
@@ -202,6 +198,7 @@ function homeNav(event) {
   // event.preventDefault();
   document.querySelector('.home-container').style.display = "";
   document.querySelector('.report-container').style.display = "none";
+  document.querySelector('.alert-success').style.display = "none";
 }
 
 function newEntryNav(event) {
@@ -211,6 +208,7 @@ function newEntryNav(event) {
   document.querySelector('.page-title').textContent = "Seen Mossy lately? Report her latest mood below.";
   document.querySelector('.view-all').style.display = "none";
   document.querySelector('.submit-new').style.display = "block";
+  document.querySelector('.alert-success').style.display = "none";
 }
 
 function allMoodsNav(event) {
@@ -220,11 +218,12 @@ function allMoodsNav(event) {
   document.querySelector('.page-title').textContent = "";
   document.querySelector('.view-all').style.display = "block";
   document.querySelector('.submit-new').style.display = "none";
+  document.querySelector('.alert-success').style.display = "none";
 }
 
 function updateAverageMood(event) {
     console.log('???', reportsData)
-    // document.querySelector('.lastDate').textContent = `${latestTimestamp}`;
+
 
 }
 
@@ -273,16 +272,32 @@ function selectOptionItem(event) {
 function submitReport(event) {
   // event.preventDefault();
   console.log('DID IT!')
-  let first = document.querySelector('#firstName').value
-  let last = document.querySelector('#lastName').value
-  alert(first)
-  alert(last)
+  let first = document.querySelector('#firstName').value;
+  let last = document.querySelector('#lastName').value;
+  // alert(first)
+  // alert(last)
 
+  let successElement = document.createElement('div')
+  successElement.textContent = "Success!";
+  successElement.className = "alert alert-success";
+  document.querySelector('.submit-new').appendChild(successElement);
 
+  document.querySelector('#submit').disabled = true;
 
   // reset view to Homepage
-  document.querySelector('.home-container').style.display = "";
-  document.querySelector('.report-container').style.display = "none";
+  // document.querySelector('.home-container').style.display = "";
+  // document.querySelector('.report-container').style.display = "none";
 
   updateLatestMood()
 }
+
+
+
+/*
+********** TO DO **********
+-ajax join tables
+-push submit data to backend
+-change to submit success message
+-populate average moods on home
+-filter and add data to table
+*/

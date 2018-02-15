@@ -54,10 +54,17 @@ section {
   padding: 0 1em 0 1em;
 }
 
-#avg-moods p {
+.avg-title {
   display: block;
   font-family: "Arial Black", Gadget, sans-serif;
   font-size: 1.5em;
+}
+
+#avg-moods p {
+  display: block;
+  /* font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 1.5em; */
+  margin-top: 1em;
 }
 
 #avg-moods .div {
@@ -193,8 +200,19 @@ h6 {
 
 .submit {
   display: flex;
+  /* flex-direction: column; */
   justify-content: center;
   margin-bottom: 2em;
+}
+
+.alert-success {
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
+  font-weight: bold;
+  margin: auto;
+  margin-top: 2em;
+  max-width: 95%;
 }
 
 footer {
