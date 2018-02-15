@@ -28,7 +28,7 @@
             <a id="home" class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a id = "new-entry" class="nav-link" href="#">New Entry</a>
+            <a id = "new-entry" class="nav-link" href="#">Report New Mood</a>
           </li>
         </ul>
       </div>
@@ -61,28 +61,34 @@
         </div>
       </div>
 
+      <!-- Report New Mood Button -->
       <div class="button-container">
         <button type="button" id="reportNewMood" class="btn btn-outline-primary">Report a New Mood</button>
       </div>
 
+      <!-- Last Reported Mood -->
       <div class="last-reported-container">
         <div class="last-reported">
-          <div class="row">
-            <h5>Last Reported Mood:</h5><span class="date">Date & Time</span>
+          <div id="last-reported-header" class="row">
+            <!-- <h5 class="lastReported"></h5> -->
+            <h5>Last Reported: </h5><span class="lastDate">Date & Time</span>
           </div>
 
-          <div class="row">
+          <div class="row lastData">
             <div class="col-sm">
-              Time of Day: Test
+              <p class="lastUser">User</p>
             </div>
             <div class="col-sm">
-              Mood: Test
+              <p class="lastTimeOfDay">TimeOfDay</p>
             </div>
             <div class="col-sm">
-              Toy: Test
+              <p class="lastMood">Mood</p>
             </div>
             <div class="col-sm">
-              Food: Test
+              <p class="lastToy">Toy</p>
+            </div>
+            <div class="col-sm">
+              <p class="lastFood">Food</p>
             </div>
           </div>
         </div>
@@ -101,28 +107,28 @@
           <div id="form" class="row">
             <div class="col-4">
               <label for="firstname">First name</label>
-              <input type="text" class="form-control" placeholder="First name" autofocus="autofocus" required>
+              <input id="firstName" type="text" class="form-control" placeholder="First name" autofocus="autofocus" required>
             </div>
             <div class="col-4">
               <label for="lastname">Last name</label>
-              <input type="text" class="form-control" placeholder="Last name" required>
+              <input id="lastName" type="text" class="form-control" placeholder="Last name" required>
             </div>
           </div>
 
           <!-- Time of Day -->
-          <div class="row">
+          <div class="row time-options">
             <h6>What time of day is it?</h6>
-            <div id="morning" class="col-sm">
+            <div id="Morning" class="col-sm">
               <!-- <img src="/images/day/if_weather-07_1530387.png"> -->
               <img src="/images/day/if_weather-07_1530387.png">
               <p>Morning</p>
             </div>
-            <div id="afternoon" class="col-sm">
+            <div id="Afternoon" class="col-sm">
               <!-- <img src="/images/day/if_weather-01_1530392.png"> -->
               <img src="/images/day/if_weather-01_1530392.png">
               <p>Afternoon</p>
             </div>
-            <div id="evening" class="col-sm">
+            <div id="Evening" class="col-sm">
               <!-- <img src="/images/day/if_weather-18_1530375.png"> -->
               <img src="/images/day/if_weather-18_1530375.png">
               <p>Evening</p>
@@ -130,28 +136,28 @@
           </div>
 
           <!-- Mood -->
-          <div class="row">
+          <div class="row mood-options">
             <h6>What Mood was Mossy in?</h6>
-            <div id="happy" class="col-sm">
+            <div id="Happy" class="col-sm">
               <img src="/images/mossy/happy-mossy1.png" alt="happy-mossy">
               <!-- <img src="/images/mossy/happy-mossy2.jpg" alt="happy-mossy"> -->
               <p>Happy</p>
             </div>
-            <div id="indifferent" class="col-sm">
+            <div id="Indifferent" class="col-sm">
               <img src="/images/mossy/indifferent-mossy2.jpg" alt="indifferent-mossy">
               <p>Indifferent</p>
             </div>
-            <div id="sassy" class="col-sm">
+            <div id="Sassy" class="col-sm">
               <img src="/images/mossy/sassy-mossy.jpg" alt="sassy-mossy">
               <p>Sassy/Playful</p>
             </div>
           </div>
 
           <!-- Toys -->
-          <div id="toy-eggplant" class="row">
+          <div class="row toy-options">
             <h6>Did Mossy play with any toys?</h6>
-            <div class="col-sm">
-              <img src="/images/toys/eggplant.jpg" alt="toy-eggplant">
+            <div id="toy-eggplant" class="col-sm">
+              <img src="/images/toys/eggplant.jpg" alt="Eggplant">
               <p>Eggplant</p>
             </div>
             <div id="toy-ball" class="col-sm">
@@ -169,9 +175,9 @@
           </div>
 
           <!-- Foods -->
-          <div class="row">
+          <div class="row food-options">
             <h6>Did Mossy have any food?</h6>
-            <div id="food-bacon" class="col-sm">
+            <div id="Bacon" class="col-sm">
               <img src="/images/foods/bacon.jpg" alt="food-bacon">
               <p>Bacon</p>
             </div>

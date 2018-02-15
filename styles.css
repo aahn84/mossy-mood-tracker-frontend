@@ -10,6 +10,7 @@ img {
   max-width: 250px;
   max-height: 250px;
   border: 1px #E1DFDE solid;
+  margin-top: 1em;
 }
 
 nav {
@@ -50,7 +51,7 @@ section {
   text-align: center;
   /* align-items: center; */
   justify-content: center;
-  padding: 0 1em 1em 1em;
+  padding: 0 1em 0 1em;
 }
 
 #avg-moods p {
@@ -95,11 +96,25 @@ section {
   padding: 0 1em 1em 1em;
 }
 
+#last-reported-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
 .last-reported h5 {
   display: flex;
   float: left;
-  /* margin-right: 1em; */
+  margin-right: 0.5em;
 }
+
+.lastData p {
+  text-align: center;
+}
+
+/* .last-reported span {
+  font-size: 1em;
+} */
 
 .report-container {
   display: none;
@@ -116,6 +131,7 @@ section {
 
 .border {
   border: 1px #6D6B69 solid;
+  padding: 1em;
 }
 
 #form {
@@ -138,7 +154,7 @@ h6 {
   font-family: "Courier New", Courier, monospace;
   /* font-family: "Arial Black", Gadget, sans-serif; */
   font-size: 1.5em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   width: 100%;
 }
 
@@ -154,6 +170,10 @@ h6 {
 
 .report-container button {
   margin-top: 2em;
+}
+
+.selected {
+  border: 1.5px #ABD6F9 solid;
 }
 
 .submit {
