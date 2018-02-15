@@ -371,14 +371,53 @@ function getAllReports() {
     })
 }
 
+const separator = '-'
+let formatTitle;
 function dropdownClick(event) {
+
+  // clear previous table data
+  let tableBody = document.querySelector('tbody')
+  // let tableRows = tableBody.querySelectorAll('tr');
+  while (tableBody.childNodes.length) {
+    tableBody.removeChild(tableBody.lastChild);
+  }
+  // let tableRows = document.querySelector('tr')
+  // // let parentNode = tableRows.parentNode;
+  // let childNodes = tableBody.childNodes;
+  //
+  // console.log(tableBody, tableRows)
+  //
+  // if(childNodes) {
+  //   childNodes.forEach(child => {
+  //     // console.log(child);
+  //     tableBody.remove(child);
+  //   })
+  // }
+
   console.log('what was clicked', event.target)
   let clickId = event.target.id
+
   console.log(clickId)
+  splitString(clickId, separator)
+  
+  document.querySelector('.selection-title').textContent = `${formatTitle}`;
 
-  document.querySelector('.selection-title').textContent = `${clickId}`;
+  if (clickId == 'All-Users') {
+    getAllReports();
+  } else {
 
+  }
 
+  // if (`${clickId}` == 'All-Users') {
+  //
+  //   getAllReports();
+  // }
+
+}
+
+function splitString(clickId, separator) {
+  let dropDownTitle = clickId.split(separator);
+  formatTitle = `${dropDownTitle[0]} ${dropDownTitle[1]}`;
 }
 
 function selectOptionItem(event) {
