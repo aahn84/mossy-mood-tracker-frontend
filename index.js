@@ -8,6 +8,7 @@ const path = 'http://localhost:3000';
 axios.get(`${path}/users`)
   .then(res => {
     // console.log(res.data);
+
     const users = res.data
     users.forEach(user => {
       let userElement = document.createElement('div')
@@ -16,13 +17,15 @@ axios.get(`${path}/users`)
                                   `
       document.querySelector('#userList').appendChild(userElement)
     })
+
+
   })
   .catch(err => {
     console.log('ERROR!', err);
   })
 
-//GET user by ID
-// axios.get(`${path}/users/:id`)
+// GET user by ID
+// axios.get(`${path}/users/${id}`)
 //   .where('id', id)
 //   .then(res => {
 //     console.log(res.data);
@@ -58,7 +61,7 @@ let formData = {
   foodsId: "",
 }
 
-// GET all report
+// GET all reports
 axios.get(`${path}/reports`)
   .then(res => {
     // let reports = res.data
@@ -97,6 +100,80 @@ axios.get(`${path}/reports`)
                                   `
       document.querySelector('#userList').appendChild(reportElement)
 
+    })
+  })
+  .catch(err => {
+    console.log('ERROR!', err);
+  })
+
+//GET all toys
+axios.get(`${path}/toys`)
+  .then(res => {
+    // console.log('toys?', res.data);
+
+    const toys = res.data
+    toys.forEach(toy => {
+      let toyElement = document.createElement('div')
+      toyElement.textContent = `Toy ID: ${toy.id}
+                                  Name: ${toy.name}
+                                  `
+      document.querySelector('#userList').appendChild(toyElement)
+    })
+  })
+  .catch(err => {
+    console.log('ERROR!', err);
+  })
+
+//GET all foods
+axios.get(`${path}/foods`)
+  .then(res => {
+    // console.log('foods?', res.data);
+
+    const foods = res.data
+    foods.forEach(food => {
+      let foodElement = document.createElement('div')
+      foodElement.textContent = `Food ID: ${food.id}
+                                  Name: ${food.name}
+                                  `
+      document.querySelector('#userList').appendChild(foodElement)
+    })
+  })
+  .catch(err => {
+    console.log('ERROR!', err);
+  })
+
+//GET reports_toys
+axios.get(`${path}/reports-toys`)
+  .then(res => {
+    // console.log('reportsToys?', res.data);
+
+    const reportsToys = res.data
+    reportsToys.forEach(repToy => {
+      let repToyElement = document.createElement('div')
+      repToyElement.textContent = `id: ${repToy.id}
+                                  reports_id: ${repToy.reports_id}
+                                  toys_id: ${repToy.toys_id}
+                                  `
+      document.querySelector('#userList').appendChild(repToyElement)
+    })
+  })
+  .catch(err => {
+    console.log('ERROR!', err);
+  })
+
+//GET reports_foods
+axios.get(`${path}/reports-foods`)
+  .then(res => {
+    console.log('reportsFoods?', res.data);
+
+    const reportsFoods = res.data
+    reportsFoods.forEach(repFood => {
+      let repFoodElement = document.createElement('div')
+      repFoodElement.textContent = `id: ${repFood.id}
+                                  reports_id: ${repFood.reports_id}
+                                  foods_id: ${repFood.foods_id}
+                                  `
+      document.querySelector('#userList').appendChild(repFoodElement)
     })
   })
   .catch(err => {
@@ -303,6 +380,7 @@ function submitReport(event) {
 -push submit data to backend
   *validate user
   *normalize first&last before adding to badkend
+  *add error all must have selections
 -required fields not blocking submit anymore
 -count populate average moods on home
 -filter and add data to table
