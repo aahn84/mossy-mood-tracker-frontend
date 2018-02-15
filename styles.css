@@ -112,10 +112,6 @@ section {
   text-align: center;
 }
 
-/* .last-reported span {
-  font-size: 1em;
-} */
-
 .report-container {
   display: none;
   padding: 1.5em;
@@ -132,6 +128,23 @@ section {
 .border {
   border: 1px #6D6B69 solid;
   padding: 1em;
+}
+
+.view-all {
+  display: none;
+  padding: 1em;
+}
+
+.all-reports h3 {
+  text-align: left;
+}
+
+.submit-new {
+  display: none;
+}
+
+.dropdown {
+  margin-bottom: 4em;
 }
 
 #form {
@@ -174,6 +187,8 @@ h6 {
 
 .selected {
   border: 1.5px #ABD6F9 solid;
+  /* max-width: 300px;
+  max-height: 310px; */
 }
 
 .submit {

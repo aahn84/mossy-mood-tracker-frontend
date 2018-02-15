@@ -28,7 +28,10 @@
             <a id="home" class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a id = "new-entry" class="nav-link" href="#">Report New Mood</a>
+            <a id="new-entry" class="nav-link" href="#">Add New Mood</a>
+          </li>
+          <li class="nav-item">
+            <a id="all-moods" class="nav-link" href="#">All Moods</a>
           </li>
         </ul>
       </div>
@@ -97,111 +100,186 @@
     </div>
 
 
-    <!-- SUBMIT NEW REPORT -->
+
+
+
     <div class="report-container">
-      <h2>Seen Mossy lately? Report her latest mood below.</h2>
+      <!-- <h2 class="page-title">Seen Mossy lately? Report her latest mood below.</h2> -->
+      <h2 class="page-title"></h2>
 
-      <!-- First & Last Name -->
       <div class="border">
-        <form>
-          <div id="form" class="row">
-            <div class="col-4">
-              <label for="firstname">First name</label>
-              <input id="firstName" type="text" class="form-control" placeholder="First name" autofocus="autofocus" required>
+
+
+        <!-- SUBMIT NEW MOOD -->
+        <div class="submit-new">
+          <!-- First & Last Name -->
+          <form>
+            <div id="form" class="row">
+              <div class="col-4">
+                <label for="firstname">First name</label>
+                <input id="firstName" type="text" class="form-control" placeholder="First name" autofocus="autofocus" required>
+              </div>
+              <div class="col-4">
+                <label for="lastname">Last name</label>
+                <input id="lastName" type="text" class="form-control" placeholder="Last name" required>
+              </div>
             </div>
-            <div class="col-4">
-              <label for="lastname">Last name</label>
-              <input id="lastName" type="text" class="form-control" placeholder="Last name" required>
+
+            <!-- Time of Day -->
+            <div class="row time-options">
+              <h6>What time of day is it?</h6>
+              <div id="Morning" class="col-sm">
+                <img src="/images/day/if_weather-07_1530387.png">
+                <p>Morning</p>
+              </div>
+              <div id="Afternoon" class="col-sm">
+                <img src="/images/day/if_weather-01_1530392.png">
+                <p>Afternoon</p>
+              </div>
+              <div id="Evening" class="col-sm">
+                <img src="/images/day/if_weather-18_1530375.png">
+                <p>Evening</p>
+              </div>
+            </div>
+
+            <!-- Mood -->
+            <div class="row mood-options">
+              <h6>What Mood was Mossy in?</h6>
+              <div id="Happy" class="col-sm">
+                <img src="/images/mossy/happy-mossy1.png" alt="happy-mossy">
+                <!-- <img src="/images/mossy/happy-mossy2.jpg" alt="happy-mossy"> -->
+                <p>Happy</p>
+              </div>
+              <div id="Indifferent" class="col-sm">
+                <img src="/images/mossy/indifferent-mossy2.jpg" alt="indifferent-mossy">
+                <p>Indifferent</p>
+              </div>
+              <div id="Sassy" class="col-sm">
+                <img src="/images/mossy/sassy-mossy.jpg" alt="sassy-mossy">
+                <p>Sassy/Playful</p>
+              </div>
+            </div>
+
+            <!-- Toys -->
+            <div class="row toy-options">
+              <h6>Did Mossy play with any toys?</h6>
+              <div id="toy-eggplant" class="col-sm">
+                <img src="/images/toys/eggplant.jpg" alt="Eggplant">
+                <p>Eggplant</p>
+              </div>
+              <div id="toy-ball" class="col-sm">
+                <img src="/images/toys/weed_tennis_ball_1.png" alt="toy-weed-ball">
+                <p>Weed Ball</p>
+              </div>
+              <div id="toy-other" class="col-sm">
+                <img src="/images/toys/dog_toys.jpg">
+                <p>Other</p>
+              </div>
+              <div id="toy-none" class="col-sm">
+                <img src="/images/toys/no-toys-allowed.png">
+                <p>None</p>
+              </div>
+            </div>
+
+            <!-- Foods -->
+            <div class="row food-options">
+              <h6>Did Mossy have any food?</h6>
+              <div id="Bacon" class="col-sm">
+                <img src="/images/foods/bacon.jpg" alt="food-bacon">
+                <p>Bacon</p>
+              </div>
+              <div id="food-treats" class="col-sm">
+                <img src="/images/foods/treats.jpg" alt="treats">
+                <p>Dog Treats</p>
+              </div>
+              <div id="food-other" class="col-sm">
+                <img src="/images/foods/food.jpg" alt="food-other">
+                <p>Other</p>
+              </div>
+              <div id="food-none" class="col-sm">
+                <img src="/images/foods/no food.jpg" alt="food-none">
+                <p>None</p>
+              </div>
+            </div>
+
+            <div class="submit">
+              <button id="submit" class="btn btn-primary btn-lg" type="submit">Submit</button>
+            </div>
+
+          </form>
+        </div>
+
+
+        <!-- VIEW ALL MOODS -->
+        <div class="view-all">
+          <!-- Dropdown Filter -->
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Filter By User
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a id="All-Users" class="dropdown-item" href="#">All Users</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
 
-          <!-- Time of Day -->
-          <div class="row time-options">
-            <h6>What time of day is it?</h6>
-            <div id="Morning" class="col-sm">
-              <!-- <img src="/images/day/if_weather-07_1530387.png"> -->
-              <img src="/images/day/if_weather-07_1530387.png">
-              <p>Morning</p>
-            </div>
-            <div id="Afternoon" class="col-sm">
-              <!-- <img src="/images/day/if_weather-01_1530392.png"> -->
-              <img src="/images/day/if_weather-01_1530392.png">
-              <p>Afternoon</p>
-            </div>
-            <div id="Evening" class="col-sm">
-              <!-- <img src="/images/day/if_weather-18_1530375.png"> -->
-              <img src="/images/day/if_weather-18_1530375.png">
-              <p>Evening</p>
-            </div>
-          </div>
+          <h6>Mossy's Moods</h6>
 
-          <!-- Mood -->
-          <div class="row mood-options">
-            <h6>What Mood was Mossy in?</h6>
-            <div id="Happy" class="col-sm">
-              <img src="/images/mossy/happy-mossy1.png" alt="happy-mossy">
-              <!-- <img src="/images/mossy/happy-mossy2.jpg" alt="happy-mossy"> -->
-              <p>Happy</p>
-            </div>
-            <div id="Indifferent" class="col-sm">
-              <img src="/images/mossy/indifferent-mossy2.jpg" alt="indifferent-mossy">
-              <p>Indifferent</p>
-            </div>
-            <div id="Sassy" class="col-sm">
-              <img src="/images/mossy/sassy-mossy.jpg" alt="sassy-mossy">
-              <p>Sassy/Playful</p>
-            </div>
-          </div>
+          <!-- Reports Table -->
+          <div class="all-reports">
+            <h3 class="selection-title">All Users</h3>
+            <!-- <p>The .table-striped class adds zebra-stripes to a table:</p> -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Time of Day</th>
+                  <th>Mood</th>
+                  <th>Toys</th>
+                  <th>Food</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
 
-          <!-- Toys -->
-          <div class="row toy-options">
-            <h6>Did Mossy play with any toys?</h6>
-            <div id="toy-eggplant" class="col-sm">
-              <img src="/images/toys/eggplant.jpg" alt="Eggplant">
-              <p>Eggplant</p>
-            </div>
-            <div id="toy-ball" class="col-sm">
-              <img src="/images/toys/weed_tennis_ball_1.png" alt="toy-weed-ball">
-              <p>Weed Ball</p>
-            </div>
-            <div id="toy-other" class="col-sm">
-              <img src="/images/toys/dog_toys.jpg">
-              <p>Other</p>
-            </div>
-            <div id="toy-none" class="col-sm">
-              <img src="/images/toys/no-toys-allowed.png">
-              <p>None</p>
-            </div>
-          </div>
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>Morning</td>
+                  <td>Happy</td>
+                  <td>None</td>
+                  <td>Bacon</td>
+                  <td>2018-02-14</td>
+                </tr>
+                <tr>
+                  <td>Mary</td>
+                  <td>Moe</td>
+                  <td>Afternoon</td>
+                  <td>Sassy</td>
+                  <td>None</td>
+                  <td>Bacon</td>
+                  <td>2018-02-14</td>
+                </tr>
+                <tr>
+                  <td>July</td>
+                  <td>Dooley</td>
+                  <td>Evening</td>
+                  <td>Indifferent</td>
+                  <td>None</td>
+                  <td>Bacon</td>
+                  <td>2018-02-14</td>
+                </tr>
+              </tbody>
 
-          <!-- Foods -->
-          <div class="row food-options">
-            <h6>Did Mossy have any food?</h6>
-            <div id="Bacon" class="col-sm">
-              <img src="/images/foods/bacon.jpg" alt="food-bacon">
-              <p>Bacon</p>
-            </div>
-            <div id="food-treats" class="col-sm">
-              <img src="/images/foods/treats.jpg" alt="treats">
-              <p>Dog Treats</p>
-            </div>
-            <div id="food-other" class="col-sm">
-              <img src="/images/foods/food.jpg" alt="food-other">
-              <p>Other</p>
-            </div>
-            <div id="food-none" class="col-sm">
-              <img src="/images/foods/no food.jpg" alt="food-none">
-              <p>None</p>
-            </div>
+            </table>
           </div>
+        </div>
 
-          <div class="submit">
-            <button id="submit" class="btn btn-primary btn-lg" type="submit">Submit</button>
-          </div>
-
-        </form>
       </div>
     </div>
+
 
     <footer>
       Copyright &copy; 2018 Angela Ahn
