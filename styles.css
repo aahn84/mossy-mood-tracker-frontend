@@ -208,7 +208,6 @@ h6 {
 .alert-success {
   display: flex;
   justify-content: center;
-  /* text-align: center; */
   font-weight: bold;
   margin: auto;
   margin-top: 2em;

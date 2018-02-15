@@ -198,7 +198,6 @@ function homeNav(event) {
   // event.preventDefault();
   document.querySelector('.home-container').style.display = "";
   document.querySelector('.report-container').style.display = "none";
-  document.querySelector('.alert-success').style.display = "none";
 }
 
 function newEntryNav(event) {
@@ -208,7 +207,12 @@ function newEntryNav(event) {
   document.querySelector('.page-title').textContent = "Seen Mossy lately? Report her latest mood below.";
   document.querySelector('.view-all').style.display = "none";
   document.querySelector('.submit-new').style.display = "block";
-  document.querySelector('.alert-success').style.display = "none";
+  document.querySelector('#submit').disabled = false;
+
+  if (document.querySelector('.alert-success')) {
+    document.querySelector('.alert-success').style.display = "none";
+  }
+
 }
 
 function allMoodsNav(event) {
@@ -218,7 +222,6 @@ function allMoodsNav(event) {
   document.querySelector('.page-title').textContent = "";
   document.querySelector('.view-all').style.display = "block";
   document.querySelector('.submit-new').style.display = "none";
-  document.querySelector('.alert-success').style.display = "none";
 }
 
 function updateAverageMood(event) {
@@ -277,12 +280,12 @@ function submitReport(event) {
   // alert(first)
   // alert(last)
 
+  document.querySelector('#submit').disabled = true;
+
   let successElement = document.createElement('div')
   successElement.textContent = "Success!";
   successElement.className = "alert alert-success";
   document.querySelector('.submit-new').appendChild(successElement);
-
-  document.querySelector('#submit').disabled = true;
 
   // reset view to Homepage
   // document.querySelector('.home-container').style.display = "";
@@ -297,7 +300,7 @@ function submitReport(event) {
 ********** TO DO **********
 -ajax join tables
 -push submit data to backend
--change to submit success message
+-required fields not blocking submit anymore
 -populate average moods on home
 -filter and add data to table
 */
