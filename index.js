@@ -1,4 +1,7 @@
+// dev path
 const path = 'http://localhost:3000';
+// prod path
+// const path = '';
 
 //***ROUTES***
 //GET all users
@@ -100,8 +103,6 @@ axios.get(`${path}/reports`)
     console.log('ERROR!', err);
   })
 
-console.log('RERERE', reportsData)
-
 
 // POST new user
 // axios.post(`${path}/users`) {
@@ -165,8 +166,8 @@ document.querySelector('.dropdown-menu').addEventListener('click', dropdownClick
 document.querySelector('.dropdown-menu').addEventListener('touchstart', dropdownClick);
 
 // NEW ENTRY button
-document.querySelector('#reportNewMood').addEventListener('click', newEntryNav);
-document.querySelector('#reportNewMood').addEventListener('touchstart', newEntryNav);
+document.querySelector('#submitNewMood').addEventListener('click', newEntryNav);
+document.querySelector('#submitNewMood').addEventListener('touchstart', newEntryNav);
 
 // Selecting Options
 document.querySelector('.time-options').addEventListener('click', selectOptionItem);
@@ -225,7 +226,7 @@ function allMoodsNav(event) {
 }
 
 function updateAverageMood(event) {
-    console.log('???', reportsData)
+    console.log('saved reportsData', reportsData)
 
 
 }
@@ -300,7 +301,9 @@ function submitReport(event) {
 ********** TO DO **********
 -ajax join tables
 -push submit data to backend
+  *validate user
+  *normalize first&last before adding to badkend
 -required fields not blocking submit anymore
--populate average moods on home
+-count populate average moods on home
 -filter and add data to table
 */

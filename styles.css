@@ -103,17 +103,20 @@ section {
   padding: 0 1em 1em 1em;
 }
 
-#last-reported-header {
+/* #last-reported-header {
   display: flex;
   align-items: center;
   margin-bottom: 1em;
-}
+} */
 
 .last-reported h5 {
   display: flex;
-  float: left;
   margin-right: 0.5em;
 }
+
+/* .last-reported span {
+  margin: 0;
+} */
 
 .lastData p {
   text-align: center;
@@ -194,8 +197,8 @@ h6 {
 
 .selected {
   border: 1.5px #ABD6F9 solid;
-  /* max-width: 300px;
-  max-height: 310px; */
+  /* max-width: 300px; */
+  /* max-height: 310px; */
 }
 
 .submit {
