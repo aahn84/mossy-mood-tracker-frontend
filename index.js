@@ -59,6 +59,11 @@ let latestToyId;
 let latestFoodId;
 let timestamp;
 
+const separator = '-'
+let userFirstName;
+let userLastName;
+let formatTitle;
+
 // GET homepage data
 axios.get(`${path}/reports`)
   .then(res => {
@@ -215,6 +220,9 @@ function homeNav(event) {
   // event.preventDefault();
   document.querySelector('.home-container').style.display = "";
   document.querySelector('.report-container').style.display = "none";
+
+  updateAverageMood();
+  updateLatestMood();
 }
 
 function updateAverageMood(event) {
@@ -248,13 +256,36 @@ function newEntryNav(event) {
 
 }
 
+let firstFormatted;
+let lastFormatted;
 function submitReport(event) {
   // event.preventDefault();
-  console.log('DID IT!')
-  let first = document.querySelector('#firstName').value;
-  let last = document.querySelector('#lastName').value;
-  // alert(first)
-  // alert(last)
+  //format user name
+  let dataFirstName = document.querySelector('#firstName').value;
+  let dataLastName = document.querySelector('#lastName').value;
+  formatUserName(dataFirstName, dataLastName, firstName, lastName);
+
+  //check for user id
+  checkUser(firstFormatted, lastFormatted);
+
+  // id new data
+  let timeOfDay = document.querySelector('.time-options .selected p').textContent;
+  let mood = document.querySelector('.mood-options .selected p').textContent;
+  let toy = document.querySelector('.toy-options .selected p').textContent;
+  let food = document.querySelector('.food-options .selected p').textContent;
+
+  let newData = {
+    firstName: firstFormatted,
+    lastName: lastFormatted,
+    timeOfDay,
+    mood,
+    toy,
+    food,
+  };
+  console.log('newData', newData);
+
+  // map all data using join tables
+  mapData({firstName, lastName, timeOfDay, mood, toy, food});
 
   document.querySelector('#submit').disabled = true;
 
@@ -263,11 +294,33 @@ function submitReport(event) {
   successElement.className = "alert alert-success";
   document.querySelector('.submit-new').appendChild(successElement);
 
-  // reset view to Homepage
-  // document.querySelector('.home-container').style.display = "";
-  // document.querySelector('.report-container').style.display = "none";
 
-  updateLatestMood()
+}
+
+function formatUserName(dataFirstName, dataLastName, firstName, lastName) {
+  firstFormatted = dataFirstName.charAt(0).toUpperCase() + dataFirstName.slice(1).toLowerCase();
+  lastFormatted = dataLastName.charAt(0).toUpperCase() + dataLastName.slice(1).toLowerCase();
+
+  console.log('firstlast???', firstFormatted, lastFormatted)
+}
+
+function checkUser(firstFormatted, lastFormatted) {
+  //return userid where first&&last match
+  //else add new user and return with new id
+}
+
+function mapData({firstName, lastName, timeOfDay, mood, toy, food}) {
+ //take string data and map to id info
+ //run post route
+
+ let postData = {
+   users_id,
+   time_of_day,
+   moods_id,
+   toys_id,
+   foods_id,
+ };
+
 }
 
 // POST new user
@@ -324,21 +377,6 @@ function getAllReports() {
         const timestampRaw = report.created_at;
         let shortTimestamp = timestampRaw.slice(0, 10);
 
-        let reportElement = document.createElement('div')
-        // returnDetailData(report.user_id, ...)
-        //   .then((responses) =>{
-        //     // set all the dependant text content here
-        //   })
-        reportElement.textContent = `
-                                    Mood: ${report.mood}
-                                    Time of day: ${report.time_of_day}
-                                    User: ${report.users_id}
-                                    Toy: ${report.toys_id}
-                                    Food: ${report.foods_id}
-                                    Timestamp: ${report.created_at}
-                                    `
-        document.querySelector('#moodsList').appendChild(reportElement)
-
         let newTableRow = document.createElement('tr');
         let newTableDataFirst = document.createElement('td');
         let newTableDataLast = document.createElement('td');
@@ -364,6 +402,21 @@ function getAllReports() {
         newTableRow.appendChild(newTableDataFood);
         newTableRow.appendChild(newTableDataTimestamp);
         document.querySelector('tbody').appendChild(newTableRow);
+
+        let reportElement = document.createElement('div')
+        // returnDetailData(report.user_id, ...)
+        //   .then((responses) =>{
+        //     // set all the dependant text content here
+        //   })
+        reportElement.textContent = `
+                                    Mood: ${report.mood}
+                                    Time of day: ${report.time_of_day}
+                                    User: ${report.users_id}
+                                    Toy: ${report.toys_id}
+                                    Food: ${report.foods_id}
+                                    Timestamp: ${report.created_at}
+                                    `
+        document.querySelector('#moodsList').appendChild(reportElement)
       })
     })
     .catch(err => {
@@ -371,53 +424,36 @@ function getAllReports() {
     })
 }
 
-const separator = '-'
-let formatTitle;
 function dropdownClick(event) {
-
   // clear previous table data
   let tableBody = document.querySelector('tbody')
-  // let tableRows = tableBody.querySelectorAll('tr');
   while (tableBody.childNodes.length) {
     tableBody.removeChild(tableBody.lastChild);
   }
-  // let tableRows = document.querySelector('tr')
-  // // let parentNode = tableRows.parentNode;
-  // let childNodes = tableBody.childNodes;
-  //
-  // console.log(tableBody, tableRows)
-  //
-  // if(childNodes) {
-  //   childNodes.forEach(child => {
-  //     // console.log(child);
-  //     tableBody.remove(child);
-  //   })
-  // }
 
+  //get event info
   console.log('what was clicked', event.target)
   let clickId = event.target.id
+  // console.log(clickId)
 
-  console.log(clickId)
+  // update table title
   splitString(clickId, separator)
-  
   document.querySelector('.selection-title').textContent = `${formatTitle}`;
 
+  // update table data
   if (clickId == 'All-Users') {
     getAllReports();
   } else {
-
+    // filterReportsByUser();
   }
-
-  // if (`${clickId}` == 'All-Users') {
-  //
-  //   getAllReports();
-  // }
 
 }
 
 function splitString(clickId, separator) {
   let dropDownTitle = clickId.split(separator);
-  formatTitle = `${dropDownTitle[0]} ${dropDownTitle[1]}`;
+  userFirstName = `${dropDownTitle[0]}`;
+  userLastName = `${dropDownTitle[1]}`
+  formatTitle = `${userFirstName} ${userLastName}`;
 }
 
 function selectOptionItem(event) {
@@ -441,6 +477,7 @@ function selectOptionItem(event) {
   })
   workingTarget.classList.toggle('selected');
 
+  // console.log('YEP', document.querySelector('.time-options .selected p').textContent);
 }
 
 
