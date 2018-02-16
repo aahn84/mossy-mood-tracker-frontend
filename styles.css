@@ -183,8 +183,6 @@ h6 {
 
 .selected {
   border: 1.5px #ABD6F9 solid;
-  /* max-width: 300px; */
-  /* max-height: 310px; */
 }
 
 .submit {
@@ -193,7 +191,7 @@ h6 {
   margin-bottom: 2em;
 }
 
-.alert-success {
+.alert-success, .alert-danger {
   display: flex;
   justify-content: center;
   font-weight: bold;

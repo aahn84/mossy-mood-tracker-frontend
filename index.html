@@ -6,9 +6,6 @@
     <title>Mossy Mood Tracker</title>
     <!-- Axios/CORS -->
     <script  src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script>
-      console.log(axios)
-    </script> -->
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- My CSS -->
@@ -17,7 +14,6 @@
 
   <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,7 +36,6 @@
     <div class="home-container">
       <header>
         <h1>Mossy Mood Tracker</h1>
-        <!-- <p>Track Mossy's Average Mood</p> -->
       </header>
 
       <div class="main">
@@ -103,7 +98,6 @@
 
     <!-- MOOD STUFF -->
     <div class="report-container">
-      <!-- <h2 class="page-title">Seen Mossy lately? Report her latest mood below.</h2> -->
       <h2 class="page-title"></h2>
 
       <div class="border">
@@ -115,11 +109,11 @@
           <form>
             <div id="form" class="row">
               <div class="col-4">
-                <label for="firstname">First name</label>
+                <label for="firstname">First name<span style="color:red">*</span></label>
                 <input id="firstName" type="text" class="form-control" placeholder="First name" autofocus="autofocus" required>
               </div>
               <div class="col-4">
-                <label for="lastname">Last name</label>
+                <label for="lastname">Last name<span style="color:red">*</span></label>
                 <input id="lastName" type="text" class="form-control" placeholder="Last name" required>
               </div>
             </div>
@@ -226,7 +220,6 @@
           <!-- Reports Table -->
           <div class="all-reports">
             <h3 class="selection-title">All Users</h3>
-            <!-- <p>The .table-striped class adds zebra-stripes to a table:</p> -->
             <table class="table table-striped">
               <thead>
                 <tr>
