@@ -108,17 +108,67 @@ function updateAverageMood(event) {
   //if mood = Indifferent imgsrc=
   //if mood = Sassy imgsrc=
 
-  // axios.get(`${path}/averagemoods`)
-  //   .then(res => {
-  //
-  //
-  //     // document.querySelector('.avg-morning').src = `${}`;
-  //     // document.querySelector('.avg-morning').src = `${}`;
-  //     // document.querySelector('.avg-morning').src = `${}`;
-  //   })
-  //   .catch(err => {
-  //     console.log('ERROR!', err);
-  //   })
+  axios.get(`${path}/averagemoods`)
+    .then(res => {
+      console.log(res.data)
+      let avgMoods = res.data;
+      let happyImg = "/images/mossy/happy-mossy1.png";
+      let indifferentImg = "/images/mossy/indifferent-mossy2.jpg";
+      let sassyImage = "/images/mossy/sassy-mossy.jpg";
+      let morningImg = document.querySelector('.avg-morning');
+      let afternoonImg = document.querySelector('.avg-afternoon');
+      let eveningImg = document.querySelector('.avg-evening');
+      let avgMorning = avgMoods.Morning.mood;
+      let avgAfternoon = avgMoods.Afternoon.mood;
+      let avgEvening = avgMoods.Evening.mood;
+
+      // populate morning avg
+      document.querySelector('.avg-morning')
+      if (avgMorning) {
+        if (avgMorning == 'Happy') {
+          morningImg.src = `${happyImg}`
+        }
+        if (avgMorning == 'Indifferent') {
+          morningImg.src = `${indifferentImg}`
+        }
+        if (avgMorning == 'Sassy') {
+          morningImg.src = `${sassyImage}`
+        }
+        document.querySelector('.morning-p').textContent = avgMorning;
+      }
+      // populate afternoon avg
+      document.querySelector('.avg-afternoon')
+      if (avgAfternoon) {
+        if (avgAfternoon == 'Happy') {
+          afternoonImg.src = `${happyImg}`
+        }
+        if (avgAfternoon == 'Indifferent') {
+          afternoonImg.src = `${indifferentImg}`
+        }
+        if (avgAfternoon == 'Sassy') {
+          afternoonImg.src = `${sassyImage}`
+        }
+        document.querySelector('.afternoon-p').textContent = avgAfternoon;
+      }
+      // populate evening avg
+      document.querySelector('.avg-evening')
+      if (avgEvening) {
+        if (avgEvening == 'Happy') {
+          eveningImg.src = `${happyImg}`
+        }
+        if (avgEvening == 'Indifferent') {
+          eveningImg.src = `${indifferentImg}`
+        }
+        if (avgEvening == 'Sassy') {
+          eveningImg.src = `${sassyImage}`
+        }
+        document.querySelector('.evening-p').textContent = avgEvening;
+      }
+
+    })
+    .catch(err => {
+      console.log('ERROR!', err);
+    })
 
 
   // document.querySelector('.avg-morning').src = `${latestTimestamp}`;
@@ -425,4 +475,5 @@ noFood.food_id = 4;
 -average moods on home
 -filter and add data to table
 -disallow select row div error
+-show alert if selections null
 */
