@@ -89,6 +89,8 @@ axios.get(`${path}/reports`)
     console.log('ERROR!', err);
   })
 
+/*
+************************
 // GET all users
 axios.get(`${path}/users`)
   .then(res => {
@@ -108,6 +110,8 @@ axios.get(`${path}/users`)
   .catch(err => {
     console.log('ERROR!', err);
   })
+************************
+  */
 
 // GET user by ID
 // axios.get(`${path}/users/${id}`)
@@ -128,78 +132,78 @@ axios.get(`${path}/users`)
 //   })
 
 //GET all toys
-axios.get(`${path}/toys`)
-  .then(res => {
-    // console.log('toys?', res.data);
-
-    const toys = res.data
-    toys.forEach(toy => {
-      let toyElement = document.createElement('div')
-      toyElement.textContent = `Toy ID: ${toy.id}
-                                  Name: ${toy.name}
-                                  `
-      document.querySelector('#userList').appendChild(toyElement)
-    })
-  })
-  .catch(err => {
-    console.log('ERROR!', err);
-  })
+// axios.get(`${path}/toys`)
+//   .then(res => {
+//     // console.log('toys?', res.data);
+//
+//     const toys = res.data
+//     toys.forEach(toy => {
+//       let toyElement = document.createElement('div')
+//       toyElement.textContent = `Toy ID: ${toy.id}
+//                                   Name: ${toy.name}
+//                                   `
+//       document.querySelector('#userList').appendChild(toyElement)
+//     })
+//   })
+//   .catch(err => {
+//     console.log('ERROR!', err);
+//   })
 
 //GET all foods
-axios.get(`${path}/foods`)
-  .then(res => {
-    // console.log('foods?', res.data);
-
-    const foods = res.data
-    foods.forEach(food => {
-      let foodElement = document.createElement('div')
-      foodElement.textContent = `Food ID: ${food.id}
-                                  Name: ${food.name}
-                                  `
-      document.querySelector('#userList').appendChild(foodElement)
-    })
-  })
-  .catch(err => {
-    console.log('ERROR!', err);
-  })
+// axios.get(`${path}/foods`)
+//   .then(res => {
+//     // console.log('foods?', res.data);
+//
+//     const foods = res.data
+//     foods.forEach(food => {
+//       let foodElement = document.createElement('div')
+//       foodElement.textContent = `Food ID: ${food.id}
+//                                   Name: ${food.name}
+//                                   `
+//       document.querySelector('#userList').appendChild(foodElement)
+//     })
+//   })
+//   .catch(err => {
+//     console.log('ERROR!', err);
+//   })
 
 //GET reports_toys
-axios.get(`${path}/reports-toys`)
-  .then(res => {
-    // console.log('reportsToys?', res.data);
-
-    const reportsToys = res.data
-    reportsToys.forEach(repToy => {
-      let repToyElement = document.createElement('div')
-      repToyElement.textContent = `id: ${repToy.id}
-                                  reports_id: ${repToy.reports_id}
-                                  toys_id: ${repToy.toys_id}
-                                  `
-      document.querySelector('#userList').appendChild(repToyElement)
-    })
-  })
-  .catch(err => {
-    console.log('ERROR!', err);
-  })
+// axios.get(`${path}/reports-toys`)
+//   .then(res => {
+//     // console.log('reportsToys?', res.data);
+//
+//     const reportsToys = res.data
+//     reportsToys.forEach(repToy => {
+//       let repToyElement = document.createElement('div')
+//       repToyElement.textContent = `id: ${repToy.id}
+//                                   reports_id: ${repToy.reports_id}
+//                                   toys_id: ${repToy.toys_id}
+//                                   `
+//       document.querySelector('#userList').appendChild(repToyElement)
+//     })
+//   })
+//   .catch(err => {
+//     console.log('ERROR!', err);
+//   })
 
 // GET reports_foods
-axios.get(`${path}/reports-foods`)
-  .then(res => {
-    console.log('reportsFoods?', res.data);
-
-    const reportsFoods = res.data
-    reportsFoods.forEach(repFood => {
-      let repFoodElement = document.createElement('div')
-      repFoodElement.textContent = `id: ${repFood.id}
-                                  reports_id: ${repFood.reports_id}
-                                  foods_id: ${repFood.foods_id}
-                                  `
-      document.querySelector('#userList').appendChild(repFoodElement)
-    })
-  })
-  .catch(err => {
-    console.log('ERROR!', err);
-  })
+// axios.get(`${path}/reports-foods`)
+//   .then(res => {
+//     console.log('reportsFoods?', res.data);
+//
+//     const reportsFoods = res.data
+//     reportsFoods.forEach(repFood => {
+//       let repFoodElement = document.createElement('div')
+//       repFoodElement.textContent = `id: ${repFood.id}
+//                                   reports_id: ${repFood.reports_id}
+//                                   foods_id: ${repFood.foods_id}
+//                                   `
+//       document.querySelector('#userList').appendChild(repFoodElement)
+//     })
+//   })
+//   .catch(err => {
+//     console.log('ERROR!', err);
+//   })
 
 
 // function returnDetailData(arr) {
@@ -253,7 +257,6 @@ function newEntryNav(event) {
   if (document.querySelector('.alert-success')) {
     document.querySelector('.alert-success').style.display = "none";
   }
-
 }
 
 let firstFormatted;
@@ -292,8 +295,6 @@ function submitReport(event) {
   successElement.textContent = "Success!";
   successElement.className = "alert alert-success";
   document.querySelector('.submit-new').appendChild(successElement);
-
-
 }
 
 function formatUserName(dataFirstName, dataLastName, firstName, lastName) {
@@ -304,44 +305,23 @@ function formatUserName(dataFirstName, dataLastName, firstName, lastName) {
 }
 
 
-// POST new user
-// axios.post(`${path}/users`) {
-//   .then() {
-//
-//   }
-//   .catch(err => {
-//     console.log('ERROR!', err);
-//   })
-// }
-
-// POST new report
-// axios.post(`${path}/reports`, {
-//     first_name: 'Fred',
-//     last_name: 'Flintstone',
-//     time_of_day: '',
-//     mood: '',
-//     toys_id: '',
-//     foods_id: '',
-//   })
-//   .then(res => {
-//     console.log(res);
-//   })
-//   .catch(err => {
-//     console.log('ERROR!', err);
-//   })
-
-
 // *VIEW ALL MOODS*
 function allMoodsNav(event) {
   // event.preventDefault();
+
+  // clear previous table data
+  clearTables();
+
   document.querySelector('.home-container').style.display = "none";
   document.querySelector('.report-container').style.display = "block";
   document.querySelector('.page-title').textContent = "";
   document.querySelector('.view-all').style.display = "block";
   document.querySelector('.submit-new').style.display = "none";
-  getAllReports()
+  getAllReports();
+  updateAverageMood();
 }
 
+let rowCount = 0;
 function getAllReports() {
   axios.get(`${path}/reports`)
     .then(res => {
@@ -359,6 +339,7 @@ function getAllReports() {
         let shortTimestamp = timestampRaw.slice(0, 10);
 
         let newTableRow = document.createElement('tr');
+        let newTableDataNumber = document.createElement('td');
         let newTableDataFirst = document.createElement('td');
         let newTableDataLast = document.createElement('td');
         let newTableDataTimeOfDay = document.createElement('td');
@@ -367,6 +348,11 @@ function getAllReports() {
         let newTableDataFood = document.createElement('td');
         let newTableDataTimestamp = document.createElement('td');
 
+        //number rows
+        rowCount++;
+        console.log('rowcount', rowCount)
+
+        newTableDataNumber.textContent = `${rowCount}`;
         newTableDataFirst.textContent = `${report.first_name}`;
         newTableDataLast.textContent = `${report.last_name}`;
         newTableDataTimeOfDay.textContent = `${report.time_of_day}`;
@@ -375,6 +361,7 @@ function getAllReports() {
         newTableDataFood.textContent = `${report.foods_id}`;
         newTableDataTimestamp.textContent = `${shortTimestamp}`;
 
+        newTableRow.appendChild(newTableDataNumber);
         newTableRow.appendChild(newTableDataFirst);
         newTableRow.appendChild(newTableDataLast);
         newTableRow.appendChild(newTableDataTimeOfDay);
@@ -384,20 +371,16 @@ function getAllReports() {
         newTableRow.appendChild(newTableDataTimestamp);
         document.querySelector('tbody').appendChild(newTableRow);
 
-        let reportElement = document.createElement('div')
-        // returnDetailData(report.user_id, ...)
-        //   .then((responses) =>{
-        //     // set all the dependant text content here
-        //   })
-        reportElement.textContent = `
-                                    Mood: ${report.mood}
-                                    Time of day: ${report.time_of_day}
-                                    User: ${report.users_id}
-                                    Toy: ${report.toys_id}
-                                    Food: ${report.foods_id}
-                                    Timestamp: ${report.created_at}
-                                    `
-        document.querySelector('#moodsList').appendChild(reportElement)
+        // let reportElement = document.createElement('div')
+        // reportElement.textContent = `
+        //                             Mood: ${report.mood}
+        //                             Time of day: ${report.time_of_day}
+        //                             User: ${report.users_id}
+        //                             Toy: ${report.toys_id}
+        //                             Food: ${report.foods_id}
+        //                             Timestamp: ${report.created_at}
+        //                             `
+        // document.querySelector('#moodsList').appendChild(reportElement)
       })
     })
     .catch(err => {
@@ -407,10 +390,11 @@ function getAllReports() {
 
 function dropdownClick(event) {
   // clear previous table data
-  let tableBody = document.querySelector('tbody')
-  while (tableBody.childNodes.length) {
-    tableBody.removeChild(tableBody.lastChild);
-  }
+  clearTables();
+  // let tableBody = document.querySelector('tbody')
+  // while (tableBody.childNodes.length) {
+  //   tableBody.removeChild(tableBody.lastChild);
+  // }
 
   //get event info
   console.log('what was clicked', event.target)
@@ -428,6 +412,14 @@ function dropdownClick(event) {
     // filterReportsByUser();
   }
 
+}
+
+function clearTables() {
+  rowCount = 0;
+  let tableBody = document.querySelector('tbody')
+  while (tableBody.childNodes.length) {
+    tableBody.removeChild(tableBody.lastChild);
+  }
 }
 
 function splitString(clickId, separator) {
@@ -490,3 +482,6 @@ noFood.food_id = 4;
 -count populate average moods on home
 -filter and add data to table
 */
+
+
+///backend get sql max query
