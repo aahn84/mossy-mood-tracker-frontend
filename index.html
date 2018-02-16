@@ -39,7 +39,7 @@
 
     <div class="home-container">
       <header>
-        <h1>Mossy Mood Tracker :)</h1>
+        <h1>Mossy Mood Tracker</h1>
         <!-- <p>Track Mossy's Average Mood</p> -->
       </header>
 
@@ -48,23 +48,17 @@
         <!-- Average Moods -->
         <div id="avg-moods" class="row">
           <h6>Mossy's Average Moods</h6>
-          <div id="avg-morning" class="col-sm">
+          <div class="col-sm">
             <p class=avg-title>Morning</p>
-            <img src="http://via.placeholder.com/250x250" alt="morning-image">
-            <p class='morning-toy'>Best Toy: Weed Ball</p>
-            <p class='morning-food'>Best Food: Bacon</p>
+            <img src="http://via.placeholder.com/250x250" class="avg-morning" alt="morning-image">
           </div>
-          <div id="avg-afternoon" class="col-sm">
+          <div class="col-sm">
             <p class=avg-title>Afternoon</p>
-            <img src="http://via.placeholder.com/250x250" alt="afternoon-image">
-            <p class='afternoon-toy'></p>
-            <p class='afternoon-food'></p>
+            <img src="http://via.placeholder.com/250x250" class="avg-afternoon" alt="afternoon-image">
           </div>
-          <div id="avg-evening" class="col-sm">
+          <div class="col-sm">
             <p class=avg-title>Evening</p>
-            <img src="http://via.placeholder.com/250x250" alt="evening-image">
-            <p class='evning-toy'></p>
-            <p class='evening-food'></p>
+            <img src="http://via.placeholder.com/250x250" class="avg-evening" alt="evening-image">
           </div>
         </div>
       </div>
@@ -100,9 +94,6 @@
           </div>
         </div>
       </div>
-
-
-      <section id='userList'></section>
 
     </div>
 
@@ -189,7 +180,7 @@
             <!-- Foods -->
             <div class="row food-options">
               <h6>Did Mossy have any food?</h6>
-              <div id="Bacon" class="col-sm">
+              <div id="food-bacon" class="col-sm">
                 <img src="/images/foods/bacon.jpg" alt="food-bacon">
                 <p>Bacon</p>
               </div>
@@ -224,8 +215,6 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a id="All-Users" class="dropdown-item" href="#">All Users</a>
-              <a id="Another-Action" class="dropdown-item" href="#">Another action</a>
-              <a id="Something-Else-Here" class="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
 

@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Delicate';
+  src: url('fonts/Mf Delicate Little Flower.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Leaffy';
+  src: url('fonts/Leaffy Demo.ttf') format('truetype');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -17,29 +27,23 @@ nav {
   background-color: #7291F3;
 }
 
-/* .navbar-brand {
-  display: block;
-  float: left;
-  color: #ffffff;
-  font-weight: bold;
-} */
-
-.form-inline button {
-  /* margin-right: 0.5em; */
-  /* border: 1.5px solid; */
-}
-
 .home-container {
   margin: 1em;
 }
 
 header {
+  display: flex;
   text-align: center;
-  margin: 1em;
+  justify-content: center;
+  margin: 3em;
 }
 
-.main {
-  /* margin: 1em; */
+header h1 {
+  font-family: 'Delicate';
+  /* font-family: 'Leaffy'; */
+  Fallback: sans-serif;
+  font-size: 3.5em;
+  /* font-size: 2.5em; */
 }
 
 section {
@@ -49,7 +53,6 @@ section {
 #avg-moods {
   display: flex;
   text-align: center;
-  /* align-items: center; */
   justify-content: center;
   padding: 0 1em 0 1em;
 }
@@ -78,11 +81,8 @@ section {
 
 .button-container {
   display: flex;
-  /* align-items: center; */
   justify-content: center;
-  /* margin: 1.5em; */
-  /* margin-bottom: 4em; */
-  /* width: 100vw; */
+  margin: 2em 0 4em 0;
 }
 
 .last-reported-container {
@@ -94,7 +94,6 @@ section {
 .last-reported {
   padding: 1em;
   border: 1px #6D6B69 solid;
-  /* color: #6D6B69; */
 }
 
 .last-reported .row {
@@ -103,20 +102,10 @@ section {
   padding: 0 1em 1em 1em;
 }
 
-/* #last-reported-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1em;
-} */
-
 .last-reported h5 {
   display: flex;
   margin-right: 0.5em;
 }
-
-/* .last-reported span {
-  margin: 0;
-} */
 
 .lastData p {
   text-align: center;
@@ -159,10 +148,8 @@ section {
 
 #form {
   display: flex;
-  /* justify-content: center; */
   text-align: left;
   font-weight: bold;
-  /* padding: 0 2.5em 0 2.5em; */
   padding-left: 3em;
   padding-bottom: 1em;
 }
@@ -175,7 +162,6 @@ section {
 h6 {
   text-align: center;
   font-family: "Courier New", Courier, monospace;
-  /* font-family: "Arial Black", Gadget, sans-serif; */
   font-size: 1.5em;
   margin-bottom: 1em;
   width: 100%;
@@ -203,7 +189,6 @@ h6 {
 
 .submit {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   margin-bottom: 2em;
 }
@@ -224,13 +209,3 @@ footer {
   padding: 1.5em;
   bottom: 0;
 }
-
-/*
-@media only screen and (max-width:620px) {
-  /* For mobile phones: */
-/*
-  .menu, .main, .right {
-    width:100%;
-  }
-}
-*/
