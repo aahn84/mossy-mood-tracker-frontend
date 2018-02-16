@@ -80,7 +80,7 @@ function loadHomepage() {
       reports = res.data
       let last = reports[reports.length-1];
 
-      console.log('reports', reports)
+      // console.log('reports', reports)
       latestMood = last.mood;
       latestTimeOfDay = last.time_of_day;
       latestUserId = `${last.first_name} ${last.last_name}`;
@@ -220,7 +220,7 @@ function submitReport(event) {
     };
     // post data to backend
     axios.post(`${path}/reports`, newData).then(result => {
-      console.log('post', result.data.result);
+      // console.log('post', result.data.result);
 
       if (result.data.result) {
         // display submit success
@@ -277,8 +277,6 @@ function getAllReports() {
     .then(res => {
       reports = res.data
 
-      console.log('moods list', reports)
-
       // list all reports
       reports.forEach(report => {
         rowCount++;
@@ -324,7 +322,7 @@ function dropdownClick(event) {
   // clear previous table data
   clearTables();
   //get event info
-  console.log('what was clicked', event.target)
+  // console.log('what was clicked', event.target)
   let clickId = event.target.id
   //populate users in dropdown
   populateDropdown();
@@ -451,22 +449,9 @@ function splitString(clickId, separator) {
 
 function selectOptionItem(event) {
   let targetClicked = event.target
-  console.log('what was clicked', event.target)
-  console.log('what was clicked', event.target.nodeName)
+  // console.log('what was clicked', event.target)
+  // console.log('what was clicked', event.target.nodeName)
   let workingTarget;
-
-  // add border to selected option
-  // if (targetClicked.classList.contains('col-sm')) {
-  //   targetClicked.classList.toggle('selected')
-  //   let parents = targetClicked.parentNode;
-  //   let children = parents.childNodes;
-  //   children.forEach(child => {
-  //     if (child.classList) {
-  //       child.classList.remove('selected');
-  //     }
-  //   })
-  //   targetClicked.classList.toggle('selected');
-  // }
 
   if (targetClicked.nodeName === 'DIV' && targetClicked.classList.contains('col-sm')) {
     workingTarget = targetClicked;
@@ -493,16 +478,6 @@ function selectOptionItem(event) {
     })
     workingTarget.classList.toggle('selected');
   }
-
-  // let parentNode = workingTarget.parentNode;
-  // let childNodes = parentNode.childNodes;
-  //
-  // childNodes.forEach(child => {
-  //   if (child.classList) {
-  //     child.classList.remove('selected');
-  //   }
-  // })
-  // workingTarget.classList.toggle('selected');
 }
 
 // set selected item ID
