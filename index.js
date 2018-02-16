@@ -276,6 +276,7 @@ function getAllReports() {
   axios.get(`${path}/reports`)
     .then(res => {
       reports = res.data
+      // console.log('reports', reports)
 
       // list all reports
       reports.forEach(report => {
