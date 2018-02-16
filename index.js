@@ -14,7 +14,7 @@ let latestFoodId;
 let timestamp;
 let rowCount = 0;
 let formatTitle;
-const separator = '-'
+const separator = '-';
 let userFirstName;
 let userLastName;
 let firstFormatted;
@@ -37,24 +37,24 @@ document.querySelector('#new-entry').addEventListener('touchstart', newEntryNav)
 document.querySelector('#all-moods').addEventListener('click', allMoodsNav);
 document.querySelector('#all-moods').addEventListener('touchstart', allMoodsNav);
 
-// SUBMIT NEW MOOD homepage
+// SUBMIT NEW MOOD button homepage
 document.querySelector('#submitNewMood').addEventListener('click', newEntryNav);
 document.querySelector('#submitNewMood').addEventListener('touchstart', newEntryNav);
 
-// SUBMIT MOOD form
-document.querySelector('#submit').addEventListener('click', submitReport)
-document.querySelector('#submit').addEventListener('touchend', submitReport)
+// SUBMIT MOOD form button
+document.querySelector('#submit').addEventListener('click', submitReport);
+document.querySelector('#submit').addEventListener('touchend', submitReport);
 document.querySelector('#submit').addEventListener('keydown', function() {
   if (event.key === 'Enter') {
     submitReport();
   }
-})
+});
 
-// REPORTS Dropdown Filter
+// REPORTS dropdown filter
 document.querySelector('.dropdown-menu').addEventListener('click', dropdownClick);
 document.querySelector('.dropdown-menu').addEventListener('touchstart', dropdownClick);
 
-// SELECT SUBMIT MOOD Option
+// SELECTED MOOD form options
 document.querySelector('.time-options').addEventListener('click', selectOptionItem);
 document.querySelector('.time-options').addEventListener('touchstart', selectOptionItem);
 document.querySelector('.mood-options').addEventListener('click', selectOptionItem);
@@ -76,11 +76,9 @@ function homeNav(event) {
 function loadHomepage() {
   axios.get(`${path}/reports`)
     .then(res => {
-      // let reports = res.data
-      reports = res.data
+      let reports = res.data;
       let last = reports[reports.length-1];
 
-      // console.log('reports', reports)
       latestMood = last.mood;
       latestTimeOfDay = last.time_of_day;
       latestUserId = `${last.first_name} ${last.last_name}`;
@@ -90,9 +88,9 @@ function loadHomepage() {
       latestTimestamp = latestTimestampRaw.slice(0, 10);
 
       // update average moods
-      updateAverageMood()
+      updateAverageMood();
       // update latest mood conatiner
-      updateLatestMood()
+      updateLatestMood();
     })
     .catch(err => {
       console.log('ERROR!', err);
@@ -163,12 +161,12 @@ function updateAverageMood(event) {
 }
 
 function updateLatestMood(event) {
-  document.querySelector('.lastDate').textContent = `${latestTimestamp}`;
-  document.querySelector('.lastUser').textContent = `User: ${latestUserId}`;
-  document.querySelector('.lastTimeOfDay').textContent = `Time of Day: ${latestTimeOfDay}`;
-  document.querySelector('.lastMood').textContent = `Mood: ${latestMood}`;
-  document.querySelector('.lastToy').textContent = `Toy: ${latestToyId}`;
-  document.querySelector('.lastFood').textContent = `Food: ${latestFoodId}`;
+  document.querySelector('.lastDate').textContent = `${latestTimestamp}`
+  document.querySelector('.lastUser').textContent = `User: ${latestUserId}`
+  document.querySelector('.lastTimeOfDay').textContent = `Time of Day: ${latestTimeOfDay}`
+  document.querySelector('.lastMood').textContent = `Mood: ${latestMood}`
+  document.querySelector('.lastToy').textContent = `Toy: ${latestToyId}`
+  document.querySelector('.lastFood').textContent = `Food: ${latestFoodId}`
 }
 
 function newEntryNav(event) {
@@ -225,9 +223,12 @@ function submitReport(event) {
       if (result.data.result) {
         // display submit success
         document.querySelector('#submit').disabled = true;
-        let errorMessage = document.querySelector('.alert-danger');
-        errorMessage.style.display = "none";
-
+        // clear any error messages
+        if (document.querySelector('.alert-danger')) {
+          let errorMessage = document.querySelector('.alert-danger');
+          errorMessage.style.display = "none";
+        }
+        // display success message
         let successElement = document.createElement('div')
         successElement.textContent = "Success!";
         successElement.className = "alert alert-success";
@@ -239,16 +240,15 @@ function submitReport(event) {
   }
   else {
     if (document.querySelector('.alert-danger')) {
-      let errorMessage = document.querySelector('.alert-danger')
-      // document.querySelector('.alert-danger').style.display = "none";
-      document.querySelector('.submit-new').removeChild(errorMessage)
+      let errorMessage = document.querySelector('.alert-danger');
+      document.querySelector('.submit-new').removeChild(errorMessage);
     }
 
     // display error
-    let errorElement = document.createElement('div')
+    let errorElement = document.createElement('div');
     errorElement.textContent = "Please complete all selections.";
     errorElement.className = "alert alert-danger";
-    document.querySelector('.submit-new').appendChild(errorElement)
+    document.querySelector('.submit-new').appendChild(errorElement);
 
     event.preventDefault();
   }
@@ -323,14 +323,13 @@ function dropdownClick(event) {
   // clear previous table data
   clearTables();
   //get event info
-  // console.log('what was clicked', event.target)
   let clickId = event.target.id
-  //populate users in dropdown
+  //populate dropdown menu
   populateDropdown();
 
   // update table title
-  splitString(clickId, separator)
-  document.querySelector('.selection-title').textContent = `${formatTitle}`;
+  splitString(clickId, separator);
+  document.querySelector('.selection-title').textContent = `${formatTitle}`
 
   // update table data
   if (clickId == 'All-Users') {
@@ -356,11 +355,11 @@ function populateDropdown() {
 
       sortUsers.forEach(user => {
         let splitUser = user.split(" ");
-        sortedArray.push({first_name: `${splitUser[0]}`, last_name: `${splitUser[1]}`})
+        sortedArray.push({first_name: `${splitUser[0]}`, last_name: `${splitUser[1]}`});
       })
 
       // clear users
-      let dropdown = document.querySelector('.dropdown-menu')
+      let dropdown = document.querySelector('.dropdown-menu');
       while (dropdown.childNodes.length >= 3) {
         dropdown.removeChild(dropdown.lastChild);
       }
@@ -435,7 +434,7 @@ function filterReportsByUser() {
 
 function clearTables() {
   rowCount = 0;
-  let tableBody = document.querySelector('tbody')
+  let tableBody = document.querySelector('tbody');
   while (tableBody.childNodes.length) {
     tableBody.removeChild(tableBody.lastChild);
   }
@@ -443,9 +442,9 @@ function clearTables() {
 
 function splitString(clickId, separator) {
   let dropDownTitle = clickId.split(separator);
-  userFirstName = `${dropDownTitle[0]}`;
+  userFirstName = `${dropDownTitle[0]}`
   userLastName = `${dropDownTitle[1]}`
-  formatTitle = `${userFirstName} ${userLastName}`;
+  formatTitle = `${userFirstName} ${userLastName}`
 }
 
 function selectOptionItem(event) {
