@@ -74,7 +74,7 @@ axios.get(`${path}/reports`)
     console.log('reports', reports)
     latestMood = last.mood;
     latestTimeOfDay = last.time_of_day;
-    latestUserId = last.users_id;
+    latestUserId = `${last.first_name} ${last.last_name}`;
     latestToyId = last.toys_id;
     latestFoodId = last.foods_id;
     const latestTimestampRaw = last.created_at;
@@ -265,27 +265,26 @@ function submitReport(event) {
   let dataLastName = document.querySelector('#lastName').value;
   formatUserName(dataFirstName, dataLastName, firstName, lastName);
 
-  //check for user id
-  checkUser(firstFormatted, lastFormatted);
-
   // id new data
-  let timeOfDay = document.querySelector('.time-options .selected p').textContent;
+  let time_of_day = document.querySelector('.time-options .selected p').textContent;
   let mood = document.querySelector('.mood-options .selected p').textContent;
-  let toy = document.querySelector('.toy-options .selected p').textContent;
-  let food = document.querySelector('.food-options .selected p').textContent;
+  let toys_id = document.querySelector('.toy-options .selected').toy_id;
+  let foods_id = document.querySelector('.food-options .selected').food_id;
 
   let newData = {
     firstName: firstFormatted,
     lastName: lastFormatted,
-    timeOfDay,
+    time_of_day,
     mood,
-    toy,
-    food,
+    toys_id,
+    foods_id,
   };
-  console.log('newData', newData);
 
-  // map all data using join tables
-  mapData({firstName, lastName, timeOfDay, mood, toy, food});
+  axios.post(`${path}/reports`, newData).then(result => {
+    console.log(result.data.result);
+  })
+
+  console.log('newData', newData);
 
   document.querySelector('#submit').disabled = true;
 
@@ -304,24 +303,6 @@ function formatUserName(dataFirstName, dataLastName, firstName, lastName) {
   console.log('firstlast???', firstFormatted, lastFormatted)
 }
 
-function checkUser(firstFormatted, lastFormatted) {
-  //return userid where first&&last match
-  //else add new user and return with new id
-}
-
-function mapData({firstName, lastName, timeOfDay, mood, toy, food}) {
- //take string data and map to id info
- //run post route
-
- let postData = {
-   users_id,
-   time_of_day,
-   moods_id,
-   toys_id,
-   foods_id,
- };
-
-}
 
 // POST new user
 // axios.post(`${path}/users`) {
@@ -386,11 +367,11 @@ function getAllReports() {
         let newTableDataFood = document.createElement('td');
         let newTableDataTimestamp = document.createElement('td');
 
-        newTableDataFirst.textContent = `${report.user}`;
-        newTableDataLast.textContent = `${report.user}`;
+        newTableDataFirst.textContent = `${report.first_name}`;
+        newTableDataLast.textContent = `${report.last_name}`;
         newTableDataTimeOfDay.textContent = `${report.time_of_day}`;
         newTableDataMood.textContent = `${report.mood}`;
-        newTableDataToy.textContent = `${report.users_id}`;
+        newTableDataToy.textContent = `${report.toys_id}`;
         newTableDataFood.textContent = `${report.foods_id}`;
         newTableDataTimestamp.textContent = `${shortTimestamp}`;
 
@@ -480,6 +461,23 @@ function selectOptionItem(event) {
   // console.log('YEP', document.querySelector('.time-options .selected p').textContent);
 }
 
+const eggPlant = document.querySelector('#toy-eggplant');
+eggPlant.toy_id = 1;
+const weedBall = document.querySelector('#toy-ball');
+weedBall.toy_id = 2;
+const otherToy = document.querySelector('#toy-other');
+otherToy.toy_id = 3;
+const noToy = document.querySelector('#toy-none');
+noToy.toy_id = 4;
+
+const bacon = document.querySelector('#Bacon');
+bacon.food_id = 1;
+const treats = document.querySelector('#food-treats');
+treats.food_id = 2;
+const otherFood = document.querySelector('#food-other');
+otherFood.food_id = 3;
+const noFood = document.querySelector('#food-none');
+noFood.food_id = 4;
 
 /*
 ********** TO DO **********
