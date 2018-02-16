@@ -54,7 +54,7 @@ document.querySelector('#submit').addEventListener('keydown', function() {
 document.querySelector('.dropdown-menu').addEventListener('click', dropdownClick);
 document.querySelector('.dropdown-menu').addEventListener('touchstart', dropdownClick);
 
-// SELECT Filter Dropdown Option
+// SELECT SUBMIT MOOD Option
 document.querySelector('.time-options').addEventListener('click', selectOptionItem);
 document.querySelector('.time-options').addEventListener('touchstart', selectOptionItem);
 document.querySelector('.mood-options').addEventListener('click', selectOptionItem);
@@ -71,8 +71,6 @@ function homeNav(event) {
   document.querySelector('.report-container').style.display = "none";
 
   loadHomepage();
-  // updateAverageMood();
-  // updateLatestMood();
 }
 
 function loadHomepage() {
@@ -81,7 +79,7 @@ function loadHomepage() {
       // let reports = res.data
       reports = res.data
       let last = reports[reports.length-1];
-      // console.log(res)
+
       console.log('reports', reports)
       latestMood = last.mood;
       latestTimeOfDay = last.time_of_day;
@@ -102,15 +100,8 @@ function loadHomepage() {
 }
 
 function updateAverageMood(event) {
-//need to do this!
-
-  //if mood = Happy imgsrc=
-  //if mood = Indifferent imgsrc=
-  //if mood = Sassy imgsrc=
-
   axios.get(`${path}/averagemoods`)
     .then(res => {
-      console.log(res.data)
       let avgMoods = res.data;
       let happyImg = "/images/mossy/happy-mossy1.png";
       let indifferentImg = "/images/mossy/indifferent-mossy2.jpg";
@@ -169,11 +160,6 @@ function updateAverageMood(event) {
     .catch(err => {
       console.log('ERROR!', err);
     })
-
-
-  // document.querySelector('.avg-morning').src = `${latestTimestamp}`;
-  // document.querySelector('.avg-morning').src = `User: ${latestUserId}`;
-  // document.querySelector('.avg-morning').src = `Time of Day: ${latestTimeOfDay}`;
 }
 
 function updateLatestMood(event) {
@@ -198,7 +184,6 @@ function newEntryNav(event) {
   while (selectedItems.length) {
     selectedItems[0].classList.remove('selected');
   }
-
   // remove success message
   if (document.querySelector('.alert-success')) {
     document.querySelector('.alert-success').style.display = "none";
@@ -210,50 +195,63 @@ function newEntryNav(event) {
 }
 
 function submitReport(event) {
+  // event.preventDefault();
+
   //format user name
   let dataFirstName = document.querySelector('#firstName').value;
   let dataLastName = document.querySelector('#lastName').value;
   formatUserName(dataFirstName, dataLastName, firstName, lastName);
 
   // identify new submit data
-  let time_of_day = document.querySelector('.time-options .selected p').textContent;
-  let mood = document.querySelector('.mood-options .selected p').textContent;
-  let toys_id = document.querySelector('.toy-options .selected').toy_id;
-  let foods_id = document.querySelector('.food-options .selected').food_id;
+  let time_of_day = document.querySelector('.time-options .selected p');
+  let mood = document.querySelector('.mood-options .selected p');
+  let toys_id = document.querySelector('.toy-options .selected');
+  let foods_id = document.querySelector('.food-options .selected');
 
+  // check if all options contain a selection
+  if (time_of_day && mood && toys_id && foods_id && dataFirstName && dataLastName) {
+    let newData = {
+      firstName: firstFormatted,
+      lastName: lastFormatted,
+      time_of_day: time_of_day.textContent,
+      mood: mood.textContent,
+      toys_id: toys_id.toy_id,
+      foods_id: foods_id.food_id,
+    };
+    // post data to backend
+    axios.post(`${path}/reports`, newData).then(result => {
+      console.log('post', result.data.result);
 
-  let newData = {
-    firstName: firstFormatted,
-    lastName: lastFormatted,
-    time_of_day,
-    mood,
-    toys_id,
-    foods_id,
-  };
-  console.log('newData', newData);
+      if (result.data.result) {
+        // display submit success
+        document.querySelector('#submit').disabled = true;
+        let errorMessage = document.querySelector('.alert-danger');
+        errorMessage.style.display = "none";
 
-  //   // display error
-  //   // document.querySelector('#submit').disabled = true;
-  //   let errorElement = document.createElement('div')
-  //   errorElement.textContent = "Please complete all selections.";
-  //   errorElement.className = "alert alert-danger";
-  //   document.querySelector('.submit-new').appendChild(errorElement);
+        let successElement = document.createElement('div')
+        successElement.textContent = "Success!";
+        successElement.className = "alert alert-success";
+        document.querySelector('.submit-new').appendChild(successElement);
 
-
-  // post data to backend
-  axios.post(`${path}/reports`, newData).then(result => {
-    console.log('post', result.data.result);
-
-    if (result.data.result) {
-      // display submit success
-      document.querySelector('#submit').disabled = true;
-      let successElement = document.createElement('div')
-      successElement.textContent = "Success!";
-      successElement.className = "alert alert-success";
-      document.querySelector('.submit-new').appendChild(successElement);
+        event.preventDefault();
+      }
+    });
+  }
+  else {
+    if (document.querySelector('.alert-danger')) {
+      let errorMessage = document.querySelector('.alert-danger')
+      // document.querySelector('.alert-danger').style.display = "none";
+      document.querySelector('.submit-new').removeChild(errorMessage)
     }
-  })
 
+    // display error
+    let errorElement = document.createElement('div')
+    errorElement.textContent = "Please complete all selections.";
+    errorElement.className = "alert alert-danger";
+    document.querySelector('.submit-new').appendChild(errorElement)
+
+    event.preventDefault();
+  }
 }
 
 function formatUserName(dataFirstName, dataLastName, firstName, lastName) {
@@ -272,7 +270,6 @@ function allMoodsNav(event) {
   document.querySelector('.submit-new').style.display = "none";
   getAllReports();
   populateDropdown();
-  // updateAverageMood();
 }
 
 function getAllReports() {
@@ -386,28 +383,56 @@ function populateDropdown() {
 }
 
 function filterReportsByUser() {
-  console.log('yep')
-  console.log(formatTitle)
-
   let splitTitle = formatTitle.split(" ");
   let user = {first_name: `${splitTitle[0]}`, last_name: `${splitTitle[1]}`}
 
-  axios.get(`${path}/users/:id`, user)
-  .then(res => {
-    console.log(res.data)
-  })
-  .catch(err => {
-    console.log('ERROR!', err);
-  })
+  axios.get(`${path}/reports`)
+    .then(res => {
+      matchingReports = res.data.filter(report => {
+        return report.first_name === user.first_name &&
+          report.last_name === user.last_name;
+      });
+
+      // list all reports for user
+      matchingReports.forEach(report => {
+        rowCount++;
+        const timestampRaw = report.created_at;
+        let shortTimestamp = timestampRaw.slice(0, 10);
+
+        let newTableRow = document.createElement('tr');
+        let newTableDataNumber = document.createElement('td');
+        let newTableDataFirst = document.createElement('td');
+        let newTableDataLast = document.createElement('td');
+        let newTableDataTimeOfDay = document.createElement('td');
+        let newTableDataMood = document.createElement('td');
+        let newTableDataToy = document.createElement('td');
+        let newTableDataFood = document.createElement('td');
+        let newTableDataTimestamp = document.createElement('td');
+
+        newTableDataNumber.textContent = `${rowCount}`;
+        newTableDataFirst.textContent = `${report.first_name}`;
+        newTableDataLast.textContent = `${report.last_name}`;
+        newTableDataTimeOfDay.textContent = `${report.time_of_day}`;
+        newTableDataMood.textContent = `${report.mood}`;
+        newTableDataToy.textContent = `${report.toys_id}`;
+        newTableDataFood.textContent = `${report.foods_id}`;
+        newTableDataTimestamp.textContent = `${shortTimestamp}`;
+
+        newTableRow.appendChild(newTableDataNumber);
+        newTableRow.appendChild(newTableDataFirst);
+        newTableRow.appendChild(newTableDataLast);
+        newTableRow.appendChild(newTableDataTimeOfDay);
+        newTableRow.appendChild(newTableDataMood);
+        newTableRow.appendChild(newTableDataToy);
+        newTableRow.appendChild(newTableDataFood);
+        newTableRow.appendChild(newTableDataTimestamp);
+        document.querySelector('tbody').appendChild(newTableRow);
+      })
+    })
+    .catch(err => {
+      console.log('ERROR!', err);
+    })
 }
-
-
-
-
-
-
-
-
 
 function clearTables() {
   rowCount = 0;
@@ -431,21 +456,53 @@ function selectOptionItem(event) {
   let workingTarget;
 
   // add border to selected option
+  // if (targetClicked.classList.contains('col-sm')) {
+  //   targetClicked.classList.toggle('selected')
+  //   let parents = targetClicked.parentNode;
+  //   let children = parents.childNodes;
+  //   children.forEach(child => {
+  //     if (child.classList) {
+  //       child.classList.remove('selected');
+  //     }
+  //   })
+  //   targetClicked.classList.toggle('selected');
+  // }
+
   if (targetClicked.nodeName === 'DIV' && targetClicked.classList.contains('col-sm')) {
     workingTarget = targetClicked;
+    workingTarget.classList.toggle('selected');
+    let parentNode = workingTarget.parentNode;
+    let childNodes = parentNode.childNodes;
+
+    childNodes.forEach(child => {
+      if (child.classList) {
+        child.classList.remove('selected');
+      }
+    })
+    workingTarget.classList.toggle('selected');
   } else if (targetClicked.nodeName === 'IMG' || targetClicked.nodeName === 'P') {
     workingTarget = targetClicked.parentNode;
+    workingTarget.classList.toggle('selected');
+    let parentNode = workingTarget.parentNode;
+    let childNodes = parentNode.childNodes;
+
+    childNodes.forEach(child => {
+      if (child.classList) {
+        child.classList.remove('selected');
+      }
+    })
+    workingTarget.classList.toggle('selected');
   }
 
-  let parentNode = workingTarget.parentNode;
-  let childNodes = parentNode.childNodes;
-
-  childNodes.forEach(child => {
-    if (child.classList) {
-      child.classList.remove('selected');
-    }
-  })
-  workingTarget.classList.toggle('selected');
+  // let parentNode = workingTarget.parentNode;
+  // let childNodes = parentNode.childNodes;
+  //
+  // childNodes.forEach(child => {
+  //   if (child.classList) {
+  //     child.classList.remove('selected');
+  //   }
+  // })
+  // workingTarget.classList.toggle('selected');
 }
 
 // set selected item ID
@@ -466,14 +523,3 @@ const otherFood = document.querySelector('#food-other');
 otherFood.food_id = 3;
 const noFood = document.querySelector('#food-none');
 noFood.food_id = 4;
-
-
-
-/*
-********** TO DO **********
--ajax join tables
--average moods on home
--filter and add data to table
--disallow select row div error
--show alert if selections null
-*/
