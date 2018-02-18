@@ -1,7 +1,7 @@
 // dev path
 const path = 'http://localhost:3000';
 // prod path
-// const path = '';
+// const path = 'https://mossy-mood.herokuapp.com';
 
 
 /***ON LOAD***/
@@ -64,8 +64,18 @@ document.querySelector('.toy-options').addEventListener('touchstart', selectOpti
 document.querySelector('.food-options').addEventListener('click', selectOptionItem);
 document.querySelector('.food-options').addEventListener('touchstart', selectOptionItem);
 
+// TAP on screen collapse nav
+document.querySelector('.navbar-collapse a').addEventListener('touchstart', collapseNav);
+document.querySelector('body').addEventListener('touchstart', collapseNav);
+
 
 /***FUNCTIONS***/
+function collapseNav(event) {
+  if(document.querySelector('.navbar-toggler data-toggle') !== "collapse") {
+      document.querySelector('.navbar-toggler').click();
+  }
+}
+
 function homeNav(event) {
   document.querySelector('.home-container').style.display = "";
   document.querySelector('.report-container').style.display = "none";

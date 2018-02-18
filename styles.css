@@ -125,6 +125,8 @@ section {
 }
 
 .border {
+  display: flex;
+  justify-content: center;
   border: 1px #6D6B69 solid;
   padding: 1em;
 }
@@ -150,8 +152,13 @@ section {
   display: flex;
   text-align: left;
   font-weight: bold;
-  padding-left: 3em;
+  /* padding-left: 3em; */
   padding-bottom: 1em;
+}
+
+#form .row {
+  display: flex;
+  flex-direction: column;
 }
 
 .report-container .row {
@@ -206,4 +213,14 @@ footer {
   width: 100%;
   padding: 1.5em;
   bottom: 0;
+}
+
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+  #form .row {
+    display: flex;
+    flex-direction: column;
+  }
 }
