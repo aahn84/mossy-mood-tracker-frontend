@@ -64,9 +64,9 @@ document.querySelector('.toy-options').addEventListener('touchstart', selectOpti
 document.querySelector('.food-options').addEventListener('click', selectOptionItem);
 document.querySelector('.food-options').addEventListener('touchstart', selectOptionItem);
 
-// TAP on screen collapse nav
-document.querySelector('.navbar-collapse a').addEventListener('touchstart', collapseNav);
-document.querySelector('body').addEventListener('touchstart', collapseNav);
+// TAP to collapse on menu nav
+document.querySelector('.sticky-top').addEventListener('touchstart', collapseNav);
+
 
 
 /***FUNCTIONS***/
@@ -84,6 +84,8 @@ function homeNav(event) {
 }
 
 function loadHomepage() {
+  window.scrollTo(0, 0);
+
   axios.get(`${path}/reports`)
     .then(res => {
       let reports = res.data;
@@ -180,6 +182,8 @@ function updateLatestMood(event) {
 }
 
 function newEntryNav(event) {
+  window.scrollTo(0, 0);
+
   document.querySelector('.home-container').style.display = "none";
   document.querySelector('.report-container').style.display = "block";
   document.querySelector('.page-title').textContent = "Seen Mossy lately? Report her latest mood below.";
@@ -193,17 +197,25 @@ function newEntryNav(event) {
     selectedItems[0].classList.remove('selected');
   }
   // remove success message
-  if (document.querySelector('.alert-success')) {
-    document.querySelector('.alert-success').style.display = "none";
-  }
+  clearSuccess();
   // remove error message
+  clearError();
+}
+
+function clearError() {
   if (document.querySelector('.alert-danger')) {
     document.querySelector('.alert-danger').style.display = "none";
   }
 }
 
+function clearSuccess () {
+  if (document.querySelector('.alert-success')) {
+    document.querySelector('.alert-success').style.display = "none";
+  }
+}
+
 function submitReport(event) {
-  // event.preventDefault();
+  event.preventDefault();
 
   //format user name
   let dataFirstName = document.querySelector('#firstName').value;
@@ -270,7 +282,8 @@ function formatUserName(dataFirstName, dataLastName, firstName, lastName) {
 }
 
 function allMoodsNav(event) {
-// clear previous table data
+  window.scrollTo(0, 0);
+  // clear previous table data
   clearTables();
 
   document.querySelector('.home-container').style.display = "none";
