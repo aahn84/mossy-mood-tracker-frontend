@@ -1,7 +1,7 @@
 // dev path
-const path = 'http://localhost:3000';
+// const path = 'http://localhost:3000';
 // prod path
-// const path = 'https://mossy-mood.herokuapp.com';
+const path = 'https://mossy-mood.herokuapp.com';
 
 
 /***ON LOAD***/
@@ -85,6 +85,7 @@ function homeNav(event) {
 
 function loadHomepage() {
   window.scrollTo(0, 0);
+  document.querySelector('.report-container').style.display = "none";
 
   axios.get(`${path}/reports`)
     .then(res => {
@@ -246,10 +247,8 @@ function submitReport(event) {
         // display submit success
         document.querySelector('#submit').disabled = true;
         // clear any error messages
-        if (document.querySelector('.alert-danger')) {
-          let errorMessage = document.querySelector('.alert-danger');
-          errorMessage.style.display = "none";
-        }
+        clearError();
+
         // display success message
         let successElement = document.createElement('div')
         successElement.textContent = "Success!";
@@ -260,6 +259,8 @@ function submitReport(event) {
       }
     });
   }
+
+  /////
   else {
     if (document.querySelector('.alert-danger')) {
       let errorMessage = document.querySelector('.alert-danger');
@@ -289,13 +290,15 @@ function allMoodsNav(event) {
   document.querySelector('.home-container').style.display = "none";
   document.querySelector('.report-container').style.display = "block";
   document.querySelector('.page-title').textContent = "";
-  document.querySelector('.view-all').style.display = "block";
+  document.querySelector('.view-all').style.display = "flex";
   document.querySelector('.submit-new').style.display = "none";
   getAllReports();
   populateDropdown();
 }
 
 function getAllReports() {
+  clearTables();
+
   axios.get(`${path}/reports`)
     .then(res => {
       reports = res.data
@@ -406,6 +409,8 @@ function populateDropdown() {
 function filterReportsByUser() {
   let splitTitle = formatTitle.split(" ");
   let user = {first_name: `${splitTitle[0]}`, last_name: `${splitTitle[1]}`}
+
+  clearTables();
 
   axios.get(`${path}/reports`)
     .then(res => {

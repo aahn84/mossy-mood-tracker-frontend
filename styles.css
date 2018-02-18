@@ -112,7 +112,7 @@ section {
 }
 
 .report-container {
-  display: none;
+  display: "none";
   padding: 1.5em;
   background-color: #ffffff;
   margin: 2em;
@@ -133,6 +133,8 @@ section {
 
 .view-all {
   display: none;
+  flex-direction: column;
+  justify-content: center;
   padding: 1em;
 }
 
