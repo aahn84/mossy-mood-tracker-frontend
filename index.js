@@ -1,7 +1,7 @@
 // dev path
-const path = 'http://localhost:3000';
+// const path = 'http://localhost:3000';
 // prod path
-// const path = 'https://mossy-mood.herokuapp.com';
+const path = 'https://mossy-mood.herokuapp.com';
 
 
 /***ON LOAD***/
