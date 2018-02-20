@@ -305,10 +305,13 @@ function getAllReports() {
     .then(res => {
       reports = res.data
       // console.log('reports', reports)
+      rowCount = reports.length + 1
 
       // list all reports
       reports.forEach(report => {
-        rowCount++;
+        // console.log(rowCount)
+        // rowCount++;
+        rowCount --;
         const timestampRaw = report.created_at;
         let shortTimestamp = timestampRaw.slice(0, 10);
 
