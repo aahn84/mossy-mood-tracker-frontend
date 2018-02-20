@@ -1,5 +1,5 @@
 # Mossy Mood Tracker
-Mossy is Galvanize Seattle's Data Science Dog. She is known to be a little fickle, and this tracker is intended to allow users to report each interaction with her. Each submission is stored in a backend database, and interactions are displayed to help the user understand the best time of day to play with Mossy.
+Mossy is Galvanize Seattle's Data Science Dog. She is known to be a little fickle, and this tracker is intended to allow users to report interactions with her. Each submission is stored in a backend database, and interactions are displayed to help the user understand the best time of day to play with Mossy.
 
 ### Live URL: http://mossymoodtracker.surge.sh/
 #### Frontend GitHub: https://github.com/aahn84/mossy-mood-tracker-frontend
@@ -25,7 +25,7 @@ Mossy is Galvanize Seattle's Data Science Dog. She is known to be a little fickl
 - JavaScript
 
 ## Features
-- Mobile & web responsive
+- Mobile and web responsive
 - Send and retrieve data from backend server using REST API
 
 ## Screenshots
