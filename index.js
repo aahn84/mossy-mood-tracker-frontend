@@ -90,7 +90,9 @@ function loadHomepage() {
   axios.get(`${path}/reports`)
     .then(res => {
       let reports = res.data;
-      let last = reports[reports.length-1];
+      // console.log('latestreports', reports)
+      // let last = reports[reports.length-1];
+      let last = reports[0];
 
       latestMood = last.mood;
       latestTimeOfDay = last.time_of_day;
